@@ -1,24 +1,158 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yfm-n9-dR5">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--AutoLocker-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AutoLockerClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEm-dj-X11" customClass="GradientButton" customModule="AutoLockerClient" customModuleProvider="target">
+                                <rect key="frame" x="20" y="538.5" width="160" height="47"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Unock Mac">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
+                                        <color key="value" red="1" green="0.84705882352941175" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
+                                        <color key="value" red="0.098039215686274508" green="0.32941176470588235" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="unlockMacButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h8l-ud-N3Y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vi-pd-o2l" customClass="GradientButton" customModule="AutoLockerClient" customModuleProvider="target">
+                                <rect key="frame" x="195" y="538.5" width="160" height="47"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Lock Mac">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
+                                        <color key="value" red="0.066666666666666666" green="0.2627450980392157" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
+                                        <color key="value" red="0.94901960784313721" green="0.58039215686274503" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="lockMacButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fn5-ye-b62"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWd-st-8fh" customClass="GradientButton" customModule="AutoLockerClient" customModuleProvider="target">
+                                <rect key="frame" x="20" y="600.5" width="335" height="46.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Open AutoLocker Settings">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
+                                        <color key="value" red="0.18823529411764706" green="0.2627450980392157" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
+                                        <color key="value" red="0.84313725490196079" green="0.82352941176470584" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="QuI-9K-g91" kind="show" id="PpX-9C-cw8"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <constraints>
+                            <constraint firstItem="2vi-pd-o2l" firstAttribute="height" secondItem="jWd-st-8fh" secondAttribute="height" priority="950" id="7gh-af-Z3Y"/>
+                            <constraint firstItem="iEm-dj-X11" firstAttribute="leading" secondItem="jWd-st-8fh" secondAttribute="leading" id="DSQ-Lk-qW9"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="jWd-st-8fh" secondAttribute="bottom" constant="20" id="EF8-nL-pg5"/>
+                            <constraint firstItem="2vi-pd-o2l" firstAttribute="leading" secondItem="iEm-dj-X11" secondAttribute="trailing" constant="15" id="Gw4-34-pHa"/>
+                            <constraint firstItem="jWd-st-8fh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="Hg7-CQ-Zuu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jWd-st-8fh" secondAttribute="trailing" constant="4" id="JDr-Ea-eY2"/>
+                            <constraint firstItem="2vi-pd-o2l" firstAttribute="trailing" secondItem="jWd-st-8fh" secondAttribute="trailing" id="Mk9-ky-lHM"/>
+                            <constraint firstItem="2vi-pd-o2l" firstAttribute="width" secondItem="iEm-dj-X11" secondAttribute="width" id="Oa3-3C-781"/>
+                            <constraint firstItem="iEm-dj-X11" firstAttribute="height" secondItem="jWd-st-8fh" secondAttribute="height" priority="950" id="RQS-Bx-nho"/>
+                            <constraint firstItem="jWd-st-8fh" firstAttribute="top" secondItem="2vi-pd-o2l" secondAttribute="bottom" constant="15" id="WnC-HZ-77R"/>
+                            <constraint firstItem="jWd-st-8fh" firstAttribute="top" secondItem="iEm-dj-X11" secondAttribute="bottom" constant="15" id="aTD-HK-uce"/>
+                            <constraint firstItem="jWd-st-8fh" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.07" priority="960" id="pl6-8X-EUt"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="AutoLocker" id="ZDX-tv-qyO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="600.79999999999995" y="26.53673163418291"/>
+        </scene>
+        <!--AutoLocker Settings-->
+        <scene sceneID="cKb-ca-QrB">
+            <objects>
+                <viewController title="AutoLocker Settings" id="QuI-9K-g91" customClass="AutoLockerSettingsController" customModule="AutoLockerClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="COv-L1-7MM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qm4-Qb-W6Y">
+                                <rect key="frame" x="20" y="617" width="335" height="30"/>
+                                <state key="normal" title="Set Mac Secret Key"/>
+                                <connections>
+                                    <action selector="setSecretKeyButtonPressed:" destination="QuI-9K-g91" eventType="touchUpInside" id="BaM-ku-gCQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwM-9l-G6F">
+                                <rect key="frame" x="20" y="572" width="335" height="30"/>
+                                <state key="normal" title="Set Mac Password"/>
+                                <connections>
+                                    <action selector="setPasswortButtonPressed:" destination="QuI-9K-g91" eventType="touchUpInside" id="pvp-pU-4vJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9qc-M3-9mW" firstAttribute="bottom" secondItem="Qm4-Qb-W6Y" secondAttribute="bottom" constant="20" id="5h6-Vs-rZu"/>
+                            <constraint firstItem="Qm4-Qb-W6Y" firstAttribute="top" secondItem="qwM-9l-G6F" secondAttribute="bottom" constant="15" id="VAe-t8-R3E"/>
+                            <constraint firstItem="9qc-M3-9mW" firstAttribute="trailing" secondItem="qwM-9l-G6F" secondAttribute="trailing" constant="20" id="nLl-b5-oW0"/>
+                            <constraint firstItem="qwM-9l-G6F" firstAttribute="leading" secondItem="9qc-M3-9mW" secondAttribute="leading" constant="20" id="qHS-2W-C41"/>
+                            <constraint firstItem="9qc-M3-9mW" firstAttribute="trailing" secondItem="Qm4-Qb-W6Y" secondAttribute="trailing" constant="20" id="qTh-cN-7fa"/>
+                            <constraint firstItem="Qm4-Qb-W6Y" firstAttribute="leading" secondItem="9qc-M3-9mW" secondAttribute="leading" constant="20" id="tR0-N4-kij"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9qc-M3-9mW"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="54g-J9-Ch5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1556" y="26.53673163418291"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WJC-fh-MHI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yfm-n9-dR5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uEg-RK-iFr">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Lvi-y6-LvL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sA1-ly-LgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-338.39999999999998" y="26.53673163418291"/>
         </scene>
     </scenes>
 </document>
