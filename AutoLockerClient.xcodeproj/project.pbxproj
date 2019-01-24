@@ -55,15 +55,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		56B4072821FA1AA6001BA320 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				56B4072221F9E56F001BA320 /* GradientButton.swift */,
-				56B4072421F9F5DC001BA320 /* LAManager.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		841D257F21F9D0720026D740 = {
 			isa = PBXGroup;
 			children = (
@@ -85,7 +76,8 @@
 		841D258A21F9D0720026D740 /* AutoLockerClient */ = {
 			isa = PBXGroup;
 			children = (
-				56B4072821FA1AA6001BA320 /* Model */,
+				56B4072221F9E56F001BA320 /* GradientButton.swift */,
+				56B4072421F9F5DC001BA320 /* LAManager.swift */,
 				841D258B21F9D0720026D740 /* AppDelegate.swift */,
 				841D258D21F9D0720026D740 /* ViewController.swift */,
 				56B4072621FA141D001BA320 /* AutoLockerSettingsController.swift */,
