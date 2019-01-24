@@ -39,3 +39,5 @@ playground.xcworkspace
 #
 Pods/
 IDEWorkspaceChecks.plist
+
+\.DS_Store

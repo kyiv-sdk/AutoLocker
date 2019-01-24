@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2467132221F9E948008F7E21 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2467132121F9E948008F7E21 /* CoreBluetooth.framework */; };
+		2467132621F9E982008F7E21 /* MacConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467132521F9E982008F7E21 /* MacConfiguration.swift */; };
+		2467132821F9E99B008F7E21 /* PeripheralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467132721F9E99B008F7E21 /* PeripheralController.swift */; };
+		2467132A21F9E9DB008F7E21 /* BLEConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467132921F9E9DB008F7E21 /* BLEConstants.swift */; };
+		2467132C21F9F493008F7E21 /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467132B21F9F493008F7E21 /* BLEManager.swift */; };
 		4DB1177F9AAE18D37FE5E6EE /* Pods_AutoLockerClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CD3385E72D1AED0EFACA94 /* Pods_AutoLockerClient.framework */; };
 		56B4072321F9E56F001BA320 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B4072221F9E56F001BA320 /* GradientButton.swift */; };
 		56B4072521F9F5DC001BA320 /* LAManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B4072421F9F5DC001BA320 /* LAManager.swift */; };
@@ -20,6 +25,11 @@
 
 /* Begin PBXFileReference section */
 		13FCCB6BCBB7C68A378FFFE2 /* Pods-AutoLockerClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLockerClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLockerClient/Pods-AutoLockerClient.release.xcconfig"; sourceTree = "<group>"; };
+		2467132121F9E948008F7E21 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		2467132521F9E982008F7E21 /* MacConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacConfiguration.swift; sourceTree = "<group>"; };
+		2467132721F9E99B008F7E21 /* PeripheralController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralController.swift; sourceTree = "<group>"; };
+		2467132921F9E9DB008F7E21 /* BLEConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEConstants.swift; sourceTree = "<group>"; };
+		2467132B21F9F493008F7E21 /* BLEManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
 		30CD3385E72D1AED0EFACA94 /* Pods_AutoLockerClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoLockerClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56B4072221F9E56F001BA320 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		56B4072421F9F5DC001BA320 /* LAManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LAManager.swift; sourceTree = "<group>"; };
@@ -39,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2467132221F9E948008F7E21 /* CoreBluetooth.framework in Frameworks */,
 				4DB1177F9AAE18D37FE5E6EE /* Pods_AutoLockerClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,6 +57,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2467132421F9E969008F7E21 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2467132521F9E982008F7E21 /* MacConfiguration.swift */,
+				2467132721F9E99B008F7E21 /* PeripheralController.swift */,
+				2467132921F9E9DB008F7E21 /* BLEConstants.swift */,
+				2467132B21F9F493008F7E21 /* BLEManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		379F569309501334C4404406 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +107,7 @@
 				841D259221F9D0730026D740 /* Assets.xcassets */,
 				841D259421F9D0730026D740 /* LaunchScreen.storyboard */,
 				841D259721F9D0730026D740 /* Info.plist */,
+				2467132421F9E969008F7E21 /* Model */,
 			);
 			path = AutoLockerClient;
 			sourceTree = "<group>";
@@ -92,6 +115,7 @@
 		91D93042473706FFE62BAA8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2467132121F9E948008F7E21 /* CoreBluetooth.framework */,
 				30CD3385E72D1AED0EFACA94 /* Pods_AutoLockerClient.framework */,
 			);
 			name = Frameworks;
@@ -131,6 +155,11 @@
 				TargetAttributes = {
 					841D258721F9D0720026D740 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -221,10 +250,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2467132A21F9E9DB008F7E21 /* BLEConstants.swift in Sources */,
+				2467132C21F9F493008F7E21 /* BLEManager.swift in Sources */,
 				841D258E21F9D0720026D740 /* ViewController.swift in Sources */,
-				56B4072721FA141D001BA320 /* AutoLockerSettingsController.swift in Sources */,
-				56B4072321F9E56F001BA320 /* GradientButton.swift in Sources */,
-				56B4072521F9F5DC001BA320 /* LAManager.swift in Sources */,
+                56B4072721FA141D001BA320 /* AutoLockerSettingsController.swift in Sources */,
+                56B4072321F9E56F001BA320 /* GradientButton.swift in Sources */,
+                56B4072521F9F5DC001BA320 /* LAManager.swift in Sources */,
+				2467132821F9E99B008F7E21 /* PeripheralController.swift in Sources */,
+				2467132621F9E982008F7E21 /* MacConfiguration.swift in Sources */,
 				841D258C21F9D0720026D740 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +408,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3L5KV6CDC9;
 				INFOPLIST_FILE = AutoLockerClient/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -394,6 +428,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3L5KV6CDC9;
 				INFOPLIST_FILE = AutoLockerClient/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
