@@ -47,10 +47,8 @@ extension Scanner: PeripheralScannable
             if strongSelf.centralManager!.isScanning {
                 strongSelf.centralManager?.stopScan()
             }
-            
         }
     }
-    
 }
 
 extension Scanner: CBCentralManagerDelegate {
