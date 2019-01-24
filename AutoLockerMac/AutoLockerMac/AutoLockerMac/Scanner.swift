@@ -26,6 +26,7 @@ class Scanner: NSObject {
     
     private var centralManager: CBCentralManager!
     private var peripherals = Set<DisplayPeripheral>()
+    private let serviceUUID = CBUUID(string: BLEConstants.kServiceUUID)
     
     override init() {
         super.init()
@@ -39,7 +40,7 @@ extension Scanner: PeripheralScannable
     func scanPeripherals() {
         print("start scanning")
         peripherals = []
-        self.centralManager?.scanForPeripherals(withServices: nil, options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
+        self.centralManager?.scanForPeripherals(withServices: [serviceUUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
         DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in
             guard let strongSelf = self else { return }
             if strongSelf.centralManager!.isScanning {
@@ -61,6 +62,10 @@ extension Scanner: CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         let isConnectable = advertisementData["kCBAdvDataIsConnectable"] as! Bool
+        if let name = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
+            
+            print(name)
+        }
         let discoveredPeripheral = DisplayPeripheral(peripheral: peripheral, lastRSSI: RSSI, isConnectable: isConnectable)
         peripherals.insert(discoveredPeripheral)
         
