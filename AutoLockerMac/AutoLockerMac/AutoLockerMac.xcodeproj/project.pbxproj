@@ -16,6 +16,9 @@
 		996B9F0721FA045700DC2A44 /* PeripheralScannable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B9F0621FA045700DC2A44 /* PeripheralScannable.swift */; };
 		996B9F0921FA053500DC2A44 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B9F0821FA053500DC2A44 /* Scanner.swift */; };
 		996B9F0B21FA069B00DC2A44 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B9F0A21FA069B00DC2A44 /* Injection.swift */; };
+		996B9F0D21FA1FC600DC2A44 /* CBPeripheral+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B9F0C21FA1FC600DC2A44 /* CBPeripheral+Name.swift */; };
+		996B9F0F21FA225700DC2A44 /* BLEConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B9F0E21FA225300DC2A44 /* BLEConstants.swift */; };
+		996B9F1121FA277300DC2A44 /* LockOutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B9F1021FA277000DC2A44 /* LockOutObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		996B9F0621FA045700DC2A44 /* PeripheralScannable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralScannable.swift; sourceTree = "<group>"; };
 		996B9F0821FA053500DC2A44 /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
 		996B9F0A21FA069B00DC2A44 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
+		996B9F0C21FA1FC600DC2A44 /* CBPeripheral+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CBPeripheral+Name.swift"; sourceTree = "<group>"; };
+		996B9F0E21FA225300DC2A44 /* BLEConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEConstants.swift; sourceTree = "<group>"; };
+		996B9F1021FA277000DC2A44 /* LockOutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockOutObserver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,8 @@
 		996B9EF121FA00DE00DC2A44 /* AutoLockerMac */ = {
 			isa = PBXGroup;
 			children = (
+				996B9F1021FA277000DC2A44 /* LockOutObserver.swift */,
+				996B9F0E21FA225300DC2A44 /* BLEConstants.swift */,
 				996B9EF221FA00DE00DC2A44 /* AppDelegate.swift */,
 				996B9EF421FA00DE00DC2A44 /* ViewController.swift */,
 				996B9EF621FA00DF00DC2A44 /* Assets.xcassets */,
@@ -74,6 +82,7 @@
 				996B9F0621FA045700DC2A44 /* PeripheralScannable.swift */,
 				996B9F0821FA053500DC2A44 /* Scanner.swift */,
 				996B9F0A21FA069B00DC2A44 /* Injection.swift */,
+				996B9F0C21FA1FC600DC2A44 /* CBPeripheral+Name.swift */,
 			);
 			path = AutoLockerMac;
 			sourceTree = "<group>";
@@ -153,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				996B9F0F21FA225700DC2A44 /* BLEConstants.swift in Sources */,
 				996B9F0521FA021F00DC2A44 /* View.swift in Sources */,
 				996B9F0321FA021400DC2A44 /* Presenter.swift in Sources */,
 				996B9F0B21FA069B00DC2A44 /* Injection.swift in Sources */,
@@ -160,6 +170,8 @@
 				996B9F0721FA045700DC2A44 /* PeripheralScannable.swift in Sources */,
 				996B9F0921FA053500DC2A44 /* Scanner.swift in Sources */,
 				996B9EF321FA00DE00DC2A44 /* AppDelegate.swift in Sources */,
+				996B9F0D21FA1FC600DC2A44 /* CBPeripheral+Name.swift in Sources */,
+				996B9F1121FA277300DC2A44 /* LockOutObserver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

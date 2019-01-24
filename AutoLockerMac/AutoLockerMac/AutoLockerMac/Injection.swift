@@ -9,7 +9,7 @@
 import Foundation
 
 class Injection {
-    private let scanner = Scanner()
+    private let scanner = Scanner(lockOutDataSource: LockOutObserver())
     
     static let shared = Injection()
     
