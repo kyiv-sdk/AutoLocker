@@ -13,9 +13,9 @@
 		2467132A21F9E9DB008F7E21 /* BLEConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467132921F9E9DB008F7E21 /* BLEConstants.swift */; };
 		2467132C21F9F493008F7E21 /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467132B21F9F493008F7E21 /* BLEManager.swift */; };
 		4DB1177F9AAE18D37FE5E6EE /* Pods_AutoLockerClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CD3385E72D1AED0EFACA94 /* Pods_AutoLockerClient.framework */; };
-		56B4072721FA141D001BA320 /* AutoLockerSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B4072621FA141D001BA320 /* AutoLockerSettingsController.swift */; };
+		567C57C121FB2DA500B6A9F9 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D258D21F9D0720026D740 /* LockViewController.swift */; };
+		567C57C221FB2DA500B6A9F9 /* AutoLockerSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B4072621FA141D001BA320 /* AutoLockerSettingsController.swift */; };
 		841D258C21F9D0720026D740 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D258B21F9D0720026D740 /* AppDelegate.swift */; };
-		841D258E21F9D0720026D740 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D258D21F9D0720026D740 /* LockViewController.swift */; };
 		841D259121F9D0720026D740 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841D258F21F9D0720026D740 /* Main.storyboard */; };
 		841D259321F9D0730026D740 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841D259221F9D0730026D740 /* Assets.xcassets */; };
 		841D259621F9D0730026D740 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841D259421F9D0730026D740 /* LaunchScreen.storyboard */; };
@@ -196,7 +196,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = sss;
 				TargetAttributes = {
 					841D258721F9D0720026D740 = {
@@ -300,12 +300,10 @@
 				2467132A21F9E9DB008F7E21 /* BLEConstants.swift in Sources */,
 				2467132C21F9F493008F7E21 /* BLEManager.swift in Sources */,
 				B25DF6FD21FB26720012BBE4 /* UserDefaultsManager.swift in Sources */,
-				841D258E21F9D0720026D740 /* LockViewController.swift in Sources */,
-				56B4072721FA141D001BA320 /* AutoLockerSettingsController.swift in Sources */,
+				567C57C121FB2DA500B6A9F9 /* LockViewController.swift in Sources */,
+				567C57C221FB2DA500B6A9F9 /* AutoLockerSettingsController.swift in Sources */,
 				B25DF6FB21FB24F40012BBE4 /* LAManager.swift in Sources */,
 				B25DF6F921FB24EE0012BBE4 /* GradientButton.swift in Sources */,
-				841D258E21F9D0720026D740 /* LockViewController.swift in Sources */,
-				56B4072721FA141D001BA320 /* AutoLockerSettingsController.swift in Sources */,
 				2467132821F9E99B008F7E21 /* PeripheralController.swift in Sources */,
 				2467132621F9E982008F7E21 /* MacConfiguration.swift in Sources */,
 				841D258C21F9D0720026D740 /* AppDelegate.swift in Sources */,

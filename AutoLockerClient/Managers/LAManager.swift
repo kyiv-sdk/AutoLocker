@@ -9,34 +9,20 @@
 import LocalAuthentication
 
 class LAManager {
-    private var _policy: LAPolicy
-    public var policy: LAPolicy {
-        get {
-            return _policy
-        }
-        
-        set {
-            if newValue != _policy {
-                self.authorizeDeviceOwnerWithReason { [weak self] (success, error) in
-                    guard let weakSelf = self, success else { return }
-                    weakSelf._policy = newValue
-                }
-            }
-        }
-    }
+    public var policy: LAPolicy
     
     init(policy: LAPolicy) {
-        self._policy = policy
+        self.policy = policy
     }
     
     func authorizeUserWithReason(_ reason: String, completion handler: @escaping (Bool, NSError?) -> Void) -> Void {
-        self.authorizeUserWith(_policy, reason: reason) { (success, error) in
+        self.authorizeUserWith(policy, reason: reason) { (success, error) in
             handler(success, error)
         }
     }
     
-    private func authorizeDeviceOwnerWithReason(completion handler: @escaping (Bool, NSError?) -> Void) -> Void {
-        self.authorizeUserWith(.deviceOwnerAuthenticationWithBiometrics, reason: "Only device owner can change LAPolicy.") { (success, error) in
+    func authorizeDeviceOwnerWithReason(_ reason: String, completion handler: @escaping (Bool, NSError?) -> Void) -> Void {
+        self.authorizeUserWith(LAManager.strictestPolicy, reason: reason) { (success, error) in
             handler(success, error)
         }
     }
@@ -51,8 +37,23 @@ class LAManager {
         }
         
         context.evaluatePolicy(policy, localizedReason: reason) { (success, evaluationError) in
-            handler(success, evaluationError as NSError?)
+            DispatchQueue.main.async {
+                handler(success, evaluationError as NSError?)
+            }
         }
+    }
+    
+    
+    static let strictestPolicy: LAPolicy = isBiometrySupported ? .deviceOwnerAuthenticationWithBiometrics : .deviceOwnerAuthentication
+    private static var isBiometrySupported: Bool {
+        let context = LAContext()
+        var error: NSError?
+        guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
+            print(error?.localizedDescription ?? "")
+            return false
+        }
+        let type = context.biometryType
+        return type == .faceID || type == .touchID
     }
     
 }
