@@ -51,7 +51,9 @@ class LAManager {
     
     private func authorizeUserWith(_ policy: LAPolicy, reason: String, completion handler: @escaping (Bool) -> Void) -> Void {
         self.context.evaluatePolicy(policy, localizedReason: reason) { (success, error) in
-            handler(success)
+            DispatchQueue.main.async {
+                handler(success)
+            }
         }
     }
     

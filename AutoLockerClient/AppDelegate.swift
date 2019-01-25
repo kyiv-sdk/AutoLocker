@@ -16,10 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        // let manager = BLEManager.sharedInstance
-        //TODO: remove it later
-        // manager.addConfiguration(macConfiguration: MacConfiguration(password: "1234", secret: "ABCDEF"))
-        
+        _ = BLEManager.sharedInstance
         return true
     }
 

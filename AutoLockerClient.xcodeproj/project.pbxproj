@@ -13,6 +13,7 @@
 		2467132A21F9E9DB008F7E21 /* BLEConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467132921F9E9DB008F7E21 /* BLEConstants.swift */; };
 		2467132C21F9F493008F7E21 /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467132B21F9F493008F7E21 /* BLEManager.swift */; };
 		4DB1177F9AAE18D37FE5E6EE /* Pods_AutoLockerClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CD3385E72D1AED0EFACA94 /* Pods_AutoLockerClient.framework */; };
+		567C57C021FB1CDF00B6A9F9 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567C57BF21FB1CDF00B6A9F9 /* UserDefaultsManager.swift */; };
 		56B4072321F9E56F001BA320 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B4072221F9E56F001BA320 /* GradientButton.swift */; };
 		56B4072521F9F5DC001BA320 /* LAManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B4072421F9F5DC001BA320 /* LAManager.swift */; };
 		56B4072721FA141D001BA320 /* AutoLockerSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B4072621FA141D001BA320 /* AutoLockerSettingsController.swift */; };
@@ -31,6 +32,7 @@
 		2467132921F9E9DB008F7E21 /* BLEConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEConstants.swift; sourceTree = "<group>"; };
 		2467132B21F9F493008F7E21 /* BLEManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
 		30CD3385E72D1AED0EFACA94 /* Pods_AutoLockerClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoLockerClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		567C57BF21FB1CDF00B6A9F9 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		56B4072221F9E56F001BA320 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		56B4072421F9F5DC001BA320 /* LAManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LAManager.swift; sourceTree = "<group>"; };
 		56B4072621FA141D001BA320 /* AutoLockerSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLockerSettingsController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,8 @@
 				2467132721F9E99B008F7E21 /* PeripheralController.swift */,
 				2467132921F9E9DB008F7E21 /* BLEConstants.swift */,
 				2467132B21F9F493008F7E21 /* BLEManager.swift */,
+				56B4072421F9F5DC001BA320 /* LAManager.swift */,
+				567C57BF21FB1CDF00B6A9F9 /* UserDefaultsManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -99,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				56B4072221F9E56F001BA320 /* GradientButton.swift */,
-				56B4072421F9F5DC001BA320 /* LAManager.swift */,
 				841D258B21F9D0720026D740 /* AppDelegate.swift */,
 				841D258D21F9D0720026D740 /* ViewController.swift */,
 				56B4072621FA141D001BA320 /* AutoLockerSettingsController.swift */,
@@ -253,9 +256,10 @@
 				2467132A21F9E9DB008F7E21 /* BLEConstants.swift in Sources */,
 				2467132C21F9F493008F7E21 /* BLEManager.swift in Sources */,
 				841D258E21F9D0720026D740 /* ViewController.swift in Sources */,
-                56B4072721FA141D001BA320 /* AutoLockerSettingsController.swift in Sources */,
-                56B4072321F9E56F001BA320 /* GradientButton.swift in Sources */,
-                56B4072521F9F5DC001BA320 /* LAManager.swift in Sources */,
+				56B4072721FA141D001BA320 /* AutoLockerSettingsController.swift in Sources */,
+				56B4072321F9E56F001BA320 /* GradientButton.swift in Sources */,
+				56B4072521F9F5DC001BA320 /* LAManager.swift in Sources */,
+				567C57C021FB1CDF00B6A9F9 /* UserDefaultsManager.swift in Sources */,
 				2467132821F9E99B008F7E21 /* PeripheralController.swift in Sources */,
 				2467132621F9E982008F7E21 /* MacConfiguration.swift in Sources */,
 				841D258C21F9D0720026D740 /* AppDelegate.swift in Sources */,
