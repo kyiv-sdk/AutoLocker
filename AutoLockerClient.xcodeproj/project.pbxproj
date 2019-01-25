@@ -15,6 +15,7 @@
 		4DB1177F9AAE18D37FE5E6EE /* Pods_AutoLockerClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CD3385E72D1AED0EFACA94 /* Pods_AutoLockerClient.framework */; };
 		567C57C121FB2DA500B6A9F9 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D258D21F9D0720026D740 /* LockViewController.swift */; };
 		567C57C221FB2DA500B6A9F9 /* AutoLockerSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B4072621FA141D001BA320 /* AutoLockerSettingsController.swift */; };
+		567C57C421FB582900B6A9F9 /* String+AppName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567C57C321FB582900B6A9F9 /* String+AppName.swift */; };
 		841D258C21F9D0720026D740 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D258B21F9D0720026D740 /* AppDelegate.swift */; };
 		841D259121F9D0720026D740 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841D258F21F9D0720026D740 /* Main.storyboard */; };
 		841D259321F9D0730026D740 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841D259221F9D0730026D740 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		2467132921F9E9DB008F7E21 /* BLEConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEConstants.swift; sourceTree = "<group>"; };
 		2467132B21F9F493008F7E21 /* BLEManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
 		30CD3385E72D1AED0EFACA94 /* Pods_AutoLockerClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoLockerClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		567C57C321FB582900B6A9F9 /* String+AppName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+AppName.swift"; sourceTree = "<group>"; };
 		56B4072621FA141D001BA320 /* AutoLockerSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLockerSettingsController.swift; sourceTree = "<group>"; };
 		5C9FEC8F127EC9B833DADE20 /* Pods-AutoLockerClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLockerClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLockerClient/Pods-AutoLockerClient.debug.xcconfig"; sourceTree = "<group>"; };
 		841D258821F9D0720026D740 /* AutoLockerClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoLockerClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +164,7 @@
 		B25DF6F321FB1E5E0012BBE4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				567C57C321FB582900B6A9F9 /* String+AppName.swift */,
 				B25DF6F421FB1E740012BBE4 /* UIViewController+Alerts.swift */,
 			);
 			path = Extensions;
@@ -299,6 +302,7 @@
 				B25DF6F721FB1FB50012BBE4 /* UIViewController+Alerts.swift in Sources */,
 				2467132A21F9E9DB008F7E21 /* BLEConstants.swift in Sources */,
 				2467132C21F9F493008F7E21 /* BLEManager.swift in Sources */,
+				567C57C421FB582900B6A9F9 /* String+AppName.swift in Sources */,
 				B25DF6FD21FB26720012BBE4 /* UserDefaultsManager.swift in Sources */,
 				567C57C121FB2DA500B6A9F9 /* LockViewController.swift in Sources */,
 				567C57C221FB2DA500B6A9F9 /* AutoLockerSettingsController.swift in Sources */,

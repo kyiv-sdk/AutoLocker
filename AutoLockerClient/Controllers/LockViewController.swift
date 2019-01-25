@@ -41,7 +41,7 @@ class LockViewController: UIViewController {
 
     @IBAction func showAutoLockerSettingsButtonPressed(_ sender: UIButton) {
         self.authManager.authorizeDeviceOwnerWithReason(kLockUnlockReason) { [weak self] (success, error) in
-            if let error = error { self?.showInfoAlert(title: "Error", message: error.localizedDescription) }
+            if let error = error { self?.showInfoAlert(title: String.appName, message: error.localizedDescription) }
             if success {
                 self?.performSegue(withIdentifier: "ShowAutoLockerSettings", sender: self)
             }
