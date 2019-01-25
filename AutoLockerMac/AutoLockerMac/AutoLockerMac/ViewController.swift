@@ -16,9 +16,12 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        toggleLaunchAtStartup()
+        //toggleLaunchAtStartup()
+        
+        lock()
         
         presenter.attachView(view: self)
+        
         presenter.startScanPeripherals()
         // Do any additional setup after loading the view.
     }
@@ -34,19 +37,8 @@ class ViewController: NSViewController {
 extension ViewController: View {
    
     func lock() {
-        let path = Bundle.main.path(forResource: "lockScreen", ofType: "scpt")
-        let url = URL(fileURLWithPath: path ?? "")
+        let appleScript = NSAppleScript(source: "do shell script \"/System/Library/CoreServices/'Menu Extras'/User.menu/Contents/Resources/CGSession -suspend\"")
         
-        var errors: NSDictionary?
-    
-        let appleScript = NSAppleScript(contentsOf: url, error: &errors)
-
-        if let script = appleScript {
-            var possibleError: NSDictionary?
-            script.executeAndReturnError(&possibleError)
-            if let error = possibleError {
-                print("ERROR: \(error)")
-            }
-        }
+        appleScript?.executeAndReturnError(nil);
     }
 }
