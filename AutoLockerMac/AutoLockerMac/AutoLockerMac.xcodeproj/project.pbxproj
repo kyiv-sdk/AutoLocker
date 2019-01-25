@@ -10,6 +10,8 @@
 		2467133221FAFF78008F7E21 /* BLEDeviceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467133121FAFF78008F7E21 /* BLEDeviceData.swift */; };
 		2467133421FB105A008F7E21 /* BleConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467133321FB105A008F7E21 /* BleConnection.swift */; };
 		2467133921FB26F4008F7E21 /* LockOutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467133821FB26F4008F7E21 /* LockOutManager.swift */; };
+		9935770521FB2F2D0027704C /* lockScreen.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 9935770421FB2F2D0027704C /* lockScreen.scpt */; };
+		9942FD8121FB2A500031A614 /* LauncherStarter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9942FD8021FB2A500031A614 /* LauncherStarter.swift */; };
 		996B9EF321FA00DE00DC2A44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B9EF221FA00DE00DC2A44 /* AppDelegate.swift */; };
 		996B9EF521FA00DE00DC2A44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B9EF421FA00DE00DC2A44 /* ViewController.swift */; };
 		996B9EF721FA00DF00DC2A44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 996B9EF621FA00DF00DC2A44 /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 		2467133121FAFF78008F7E21 /* BLEDeviceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEDeviceData.swift; sourceTree = "<group>"; };
 		2467133321FB105A008F7E21 /* BleConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleConnection.swift; sourceTree = "<group>"; };
 		2467133821FB26F4008F7E21 /* LockOutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockOutManager.swift; sourceTree = "<group>"; };
+		9935770421FB2F2D0027704C /* lockScreen.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lockScreen.scpt; sourceTree = "<group>"; };
+		9942FD8021FB2A500031A614 /* LauncherStarter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherStarter.swift; sourceTree = "<group>"; };
 		996B9EEF21FA00DE00DC2A44 /* AutoLockerMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoLockerMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		996B9EF221FA00DE00DC2A44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		996B9EF421FA00DE00DC2A44 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +91,7 @@
 		996B9EF121FA00DE00DC2A44 /* AutoLockerMac */ = {
 			isa = PBXGroup;
 			children = (
+				9935770421FB2F2D0027704C /* lockScreen.scpt */,
 				996B9F1021FA277000DC2A44 /* LockOutObserver.swift */,
 				996B9F0E21FA225300DC2A44 /* BLEConstants.swift */,
 				996B9EF221FA00DE00DC2A44 /* AppDelegate.swift */,
@@ -100,6 +105,7 @@
 				996B9F0A21FA069B00DC2A44 /* Injection.swift */,
 				2467133821FB26F4008F7E21 /* LockOutManager.swift */,
 				2467133521FB1160008F7E21 /* bluetooth */,
+				9942FD8021FB2A500031A614 /* LauncherStarter.swift */,
 			);
 			path = AutoLockerMac;
 			sourceTree = "<group>";
@@ -169,6 +175,7 @@
 			files = (
 				996B9EF721FA00DF00DC2A44 /* Assets.xcassets in Resources */,
 				996B9EFA21FA00DF00DC2A44 /* Main.storyboard in Resources */,
+				9935770521FB2F2D0027704C /* lockScreen.scpt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +191,7 @@
 				996B9F0321FA021400DC2A44 /* Presenter.swift in Sources */,
 				2467133221FAFF78008F7E21 /* BLEDeviceData.swift in Sources */,
 				2467133921FB26F4008F7E21 /* LockOutManager.swift in Sources */,
+				9942FD8121FB2A500031A614 /* LauncherStarter.swift in Sources */,
 				996B9F0B21FA069B00DC2A44 /* Injection.swift in Sources */,
 				996B9EF521FA00DE00DC2A44 /* ViewController.swift in Sources */,
 				996B9F0721FA045700DC2A44 /* PeripheralScannable.swift in Sources */,
