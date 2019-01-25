@@ -35,13 +35,13 @@ class BleConnection: NSObject {
         super.init()
         // setup
         peripheral.peripheral.delegate = self
+        self.manager.connect(peripheral.peripheral, options: nil)
     }
     
     class func createConnection(central: CBCentralManager,
                                 peripheral:DisplayPeripheral,
                                 bleDeviceData: BLEDeviceData,
                                 lockOutDecider: LockOutDecider) -> BleConnection {
-        central.connect(peripheral.peripheral, options: nil)
         return BleConnection(manager: central,
                              peripheral: peripheral,
                              bleDeviceData: bleDeviceData,
