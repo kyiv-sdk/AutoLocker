@@ -27,9 +27,12 @@ class Scanner: NSObject {
     private var centralManager: CBCentralManager!
     private var peripherals = Set<DisplayPeripheral>()
     private let serviceUUID = CBUUID(string: BLEConstants.kServiceUUID)
-    private var lockOutDataSource: LockOutDataSource;
+    private var lockOutDataSource: LockOutDataSource
+    private var bleDeviceData: BLEDeviceData
     
-    init(lockOutDataSource: LockOutDataSource) {
+    init(lockOutDataSource: LockOutDataSource,
+         bleDeviceData: BLEDeviceData) {
+        self.bleDeviceData = bleDeviceData
         self.lockOutDataSource = lockOutDataSource;
         super.init()
         self.centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
