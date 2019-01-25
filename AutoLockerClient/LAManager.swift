@@ -19,7 +19,7 @@ class LAManager {
         
         set {
             if newValue != _policy {
-                self.authorizeDeviceOwnerWithRason { [weak self] (success) in
+                self.authorizeDeviceOwnerWithReason { [weak self] (success) in
                     guard let weakSelf = self, success else { return }
                     weakSelf._policy = newValue
                 }
@@ -36,21 +36,21 @@ class LAManager {
     
     
     
-    func authorizeUserWithRason(_ reason: String, completion handler: @escaping (Bool) -> Void) -> Void {
+    func authorizeUserWithReason(_ reason: String, completion handler: @escaping (Bool) -> Void) -> Void {
         self.authorizeUserWith(_policy, reason: reason) { (success) in
             handler(success)
         }
     }
     
     
-    private func authorizeDeviceOwnerWithRason(completion handler: @escaping (Bool) -> Void) -> Void {
+    private func authorizeDeviceOwnerWithReason(completion handler: @escaping (Bool) -> Void) -> Void {
         self.authorizeUserWith(.deviceOwnerAuthenticationWithBiometrics, reason: "Only device owner can change LAPolicy.") { (success) in
             handler(success)
         }
     }
     
     private func authorizeUserWith(_ policy: LAPolicy, reason: String, completion handler: @escaping (Bool) -> Void) -> Void {
-        self.context.evaluatePolicy(policy, localizedReason: reason) { (success, _) in
+        self.context.evaluatePolicy(policy, localizedReason: reason) { (success, error) in
             handler(success)
         }
     }

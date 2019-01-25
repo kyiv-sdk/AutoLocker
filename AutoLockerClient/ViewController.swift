@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func unlockMacButtonPressed(_ sender: UIButton) {
-        self.authManager.authorizeUserWithRason(kLockUnlockReason) { [weak self] (authorized) in
+        self.authManager.authorizeUserWithReason(kLockUnlockReason) { [weak self] (authorized) in
             guard let weakSelf = self else { return }
             if authorized {
                 // TODO: Send request with pwd to Mac
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func lockMacButtonPressed(_ sender: UIButton) {
-        self.authManager.authorizeUserWithRason(kLockUnlockReason) { [weak self] (authorized) in
+        self.authManager.authorizeUserWithReason(kLockUnlockReason) { [weak self] (authorized) in
             guard let weakSelf = self else { return }
             if authorized {
                 // TODO: Send lock request to Mac
