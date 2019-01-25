@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2467133221FAFF78008F7E21 /* BLEDeviceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467133121FAFF78008F7E21 /* BLEDeviceData.swift */; };
 		2467133421FB105A008F7E21 /* BleConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467133321FB105A008F7E21 /* BleConnection.swift */; };
+		2467133921FB26F4008F7E21 /* LockOutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467133821FB26F4008F7E21 /* LockOutManager.swift */; };
 		996B9EF321FA00DE00DC2A44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B9EF221FA00DE00DC2A44 /* AppDelegate.swift */; };
 		996B9EF521FA00DE00DC2A44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B9EF421FA00DE00DC2A44 /* ViewController.swift */; };
 		996B9EF721FA00DF00DC2A44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 996B9EF621FA00DF00DC2A44 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		2467133121FAFF78008F7E21 /* BLEDeviceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEDeviceData.swift; sourceTree = "<group>"; };
 		2467133321FB105A008F7E21 /* BleConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleConnection.swift; sourceTree = "<group>"; };
+		2467133821FB26F4008F7E21 /* LockOutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockOutManager.swift; sourceTree = "<group>"; };
 		996B9EEF21FA00DE00DC2A44 /* AutoLockerMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoLockerMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		996B9EF221FA00DE00DC2A44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		996B9EF421FA00DE00DC2A44 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				996B9F0221FA021400DC2A44 /* Presenter.swift */,
 				996B9F0421FA021F00DC2A44 /* View.swift */,
 				996B9F0A21FA069B00DC2A44 /* Injection.swift */,
+				2467133821FB26F4008F7E21 /* LockOutManager.swift */,
 				2467133521FB1160008F7E21 /* bluetooth */,
 			);
 			path = AutoLockerMac;
@@ -180,6 +183,7 @@
 				996B9F0521FA021F00DC2A44 /* View.swift in Sources */,
 				996B9F0321FA021400DC2A44 /* Presenter.swift in Sources */,
 				2467133221FAFF78008F7E21 /* BLEDeviceData.swift in Sources */,
+				2467133921FB26F4008F7E21 /* LockOutManager.swift in Sources */,
 				996B9F0B21FA069B00DC2A44 /* Injection.swift in Sources */,
 				996B9EF521FA00DE00DC2A44 /* ViewController.swift in Sources */,
 				996B9F0721FA045700DC2A44 /* PeripheralScannable.swift in Sources */,
@@ -325,8 +329,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AutoLockerMac/AutoLockerMac.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = S99QSEYL6F;
 				INFOPLIST_FILE = AutoLockerMac/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -334,6 +340,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.swftdvl.autolockermac.AutoLockerMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -343,8 +350,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AutoLockerMac/AutoLockerMac.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = S99QSEYL6F;
 				INFOPLIST_FILE = AutoLockerMac/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -352,6 +361,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.swftdvl.autolockermac.AutoLockerMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;

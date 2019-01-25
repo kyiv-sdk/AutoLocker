@@ -27,15 +27,15 @@ class Scanner: NSObject {
     private var centralManager: CBCentralManager!
     private var targetPeripheral: DisplayPeripheral?
     private let serviceUUID = CBUUID(string: BLEConstants.kServiceUUID)
-    private var lockOutDataSource: LockOutDataSource
+    private var lockOutDecider: LockOutDecider
     private var bleDeviceData: BLEDeviceData
     private var connection: BleConnection?
     private var isScanning = false
     
-    init(lockOutDataSource: LockOutDataSource,
+    init(lockOutDecider: LockOutDecider,
          bleDeviceData: BLEDeviceData) {
         self.bleDeviceData = bleDeviceData
-        self.lockOutDataSource = lockOutDataSource;
+        self.lockOutDecider = lockOutDecider;
         super.init()
         self.centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
     }
@@ -45,7 +45,9 @@ class Scanner: NSObject {
     func onPeripheralFound(peripheral: DisplayPeripheral) {
         self.targetPeripheral = peripheral
         self.cancelScanning()
-        self.connection = BleConnection.createConnection(central: centralManager, peripheral: peripheral)
+        self.connection = BleConnection.createConnection(central: centralManager,
+                                                         peripheral: peripheral,
+                                                         lockOutDecider: self.lockOutDecider)
     }
     
     func onScanStart() -> Bool {
@@ -107,5 +109,13 @@ extension Scanner: CBCentralManagerDelegate {
         }
         let discoveredPeripheral = DisplayPeripheral(peripheral: peripheral, lastRSSI: RSSI, isConnectable: isConnectable)
         self.onPeripheralFound(peripheral: discoveredPeripheral)
+    }
+    
+    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+        self.connection?.didConnect()
+    }
+    
+    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        self.connection?.didFailToConnect()
     }
 }

@@ -11,14 +11,16 @@ import Foundation
 class Injection {
     private let bleDeviceData: BLEDeviceData
     private let scanner: Scanner
-    
+    private let lockOutDecider: LockOutDecider
     static let shared = Injection()
     
     private init() {
         let bleDeviceData = BLEDeviceData.restoreFromStorage()
+        let lockOutDecider = LockOutManager()
         self.bleDeviceData = bleDeviceData
-        self.scanner = Scanner(lockOutDataSource: LockOutObserver(),
+        self.scanner = Scanner(lockOutDecider:lockOutDecider,
                 bleDeviceData: bleDeviceData)
+        self.lockOutDecider = lockOutDecider
     }
     
     func injectBleScanner() -> PeripheralScannable {
