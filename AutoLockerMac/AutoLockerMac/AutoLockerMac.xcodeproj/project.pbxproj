@@ -10,7 +10,6 @@
 		2467133221FAFF78008F7E21 /* BLEDeviceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467133121FAFF78008F7E21 /* BLEDeviceData.swift */; };
 		2467133421FB105A008F7E21 /* BleConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467133321FB105A008F7E21 /* BleConnection.swift */; };
 		2467133921FB26F4008F7E21 /* LockOutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467133821FB26F4008F7E21 /* LockOutManager.swift */; };
-		9935770521FB2F2D0027704C /* lockScreen.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 9935770421FB2F2D0027704C /* lockScreen.scpt */; };
 		9942FD8121FB2A500031A614 /* LauncherStarter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9942FD8021FB2A500031A614 /* LauncherStarter.swift */; };
 		996B9EF321FA00DE00DC2A44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B9EF221FA00DE00DC2A44 /* AppDelegate.swift */; };
 		996B9EF521FA00DE00DC2A44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B9EF421FA00DE00DC2A44 /* ViewController.swift */; };
@@ -30,7 +29,6 @@
 		2467133121FAFF78008F7E21 /* BLEDeviceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEDeviceData.swift; sourceTree = "<group>"; };
 		2467133321FB105A008F7E21 /* BleConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleConnection.swift; sourceTree = "<group>"; };
 		2467133821FB26F4008F7E21 /* LockOutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockOutManager.swift; sourceTree = "<group>"; };
-		9935770421FB2F2D0027704C /* lockScreen.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lockScreen.scpt; sourceTree = "<group>"; };
 		9942FD8021FB2A500031A614 /* LauncherStarter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherStarter.swift; sourceTree = "<group>"; };
 		996B9EEF21FA00DE00DC2A44 /* AutoLockerMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoLockerMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		996B9EF221FA00DE00DC2A44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,7 +89,6 @@
 		996B9EF121FA00DE00DC2A44 /* AutoLockerMac */ = {
 			isa = PBXGroup;
 			children = (
-				9935770421FB2F2D0027704C /* lockScreen.scpt */,
 				996B9F1021FA277000DC2A44 /* LockOutObserver.swift */,
 				996B9F0E21FA225300DC2A44 /* BLEConstants.swift */,
 				996B9EF221FA00DE00DC2A44 /* AppDelegate.swift */,
@@ -144,7 +141,10 @@
 						CreatedOnToolsVersion = 10.0;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
 							};
 						};
 					};
@@ -175,7 +175,6 @@
 			files = (
 				996B9EF721FA00DF00DC2A44 /* Assets.xcassets in Resources */,
 				996B9EFA21FA00DF00DC2A44 /* Main.storyboard in Resources */,
-				9935770521FB2F2D0027704C /* lockScreen.scpt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,7 +335,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = AutoLockerMac/AutoLockerMac.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -357,7 +355,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = AutoLockerMac/AutoLockerMac.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
