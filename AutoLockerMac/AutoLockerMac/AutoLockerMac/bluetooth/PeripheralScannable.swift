@@ -10,4 +10,5 @@ import Foundation
 
 protocol PeripheralScannable: NSObjectProtocol {
     func scanPeripherals()
+    func cancelScanning()
 }

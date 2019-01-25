@@ -12,7 +12,7 @@ import Foundation
 
 struct DisplayPeripheral: Hashable {
     let peripheral: CBPeripheral
-    let lastRSSI: NSNumber
+    let lastRSSI: NSNumber?
     let isConnectable: Bool
     
     var hashValue: Int { return peripheral.hashValue }
@@ -29,6 +29,8 @@ class Scanner: NSObject {
     private let serviceUUID = CBUUID(string: BLEConstants.kServiceUUID)
     private var lockOutDataSource: LockOutDataSource
     private var bleDeviceData: BLEDeviceData
+    private var connection: BleConnection?
+    private var isScanning = false
     
     init(lockOutDataSource: LockOutDataSource,
          bleDeviceData: BLEDeviceData) {
@@ -37,26 +39,55 @@ class Scanner: NSObject {
         super.init()
         self.centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
     }
+    
+    // MARK: Scan logic
+    
+    func onPeripheralFound(peripheral: DisplayPeripheral) {
+        self.targetPeripheral = peripheral
+        self.cancelScanning()
+        self.connection = BleConnection.createConnection(central: centralManager, peripheral: peripheral)
+    }
+    
+    func onScanStart() -> Bool {
+        if (self.targetPeripheral != nil ||
+            self.isScanning) {
+            return false
+        }
+        // get saved identifier
+        if let identifier = self.bleDeviceData.deviceIdentifier,
+            let uuid = UUID(uuidString: identifier) {
+            let peripherals = self.centralManager.retrievePeripherals(withIdentifiers: [uuid])
+            if let peripheral = peripherals.last {
+                let displayPeripheral = DisplayPeripheral(peripheral: peripheral, lastRSSI: nil, isConnectable: true)
+                self.onPeripheralFound(peripheral: displayPeripheral)
+                return false
+            }
+        }
+        return true
+    }
 }
 
 extension Scanner: PeripheralScannable
 {
     func scanPeripherals() {
+        if onScanStart() == false {
+            return
+        }
         print("start scanning")
-        if let identifier = self.bleDeviceData.deviceIdentifier,
-            let uuid = UUID(uuidString: identifier) {
-            let peripherals = self.centralManager.retrievePeripherals(withIdentifiers: [uuid])
-            if (peripherals.count > 0) {
-                
-            }
-        }
+        isScanning = true
         self.centralManager?.scanForPeripherals(withServices: [serviceUUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in
-            guard let strongSelf = self else { return }
-            if strongSelf.centralManager!.isScanning {
+        // TODO: remove later
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in
+//            guard let strongSelf = self else { return }
+//            if strongSelf.centralManager!.isScanning {
 //                strongSelf.centralManager?.stopScan()
-            }
-        }
+//            }
+//        }
+    }
+    
+    func cancelScanning() {
+        self.centralManager?.stopScan()
+        self.isScanning = false
     }
 }
 
@@ -69,13 +100,12 @@ extension Scanner: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        let isConnectable = advertisementData["kCBAdvDataIsConnectable"] as! Bool
+        let isConnectable = advertisementData[CBAdvertisementDataIsConnectable] as! Bool
         if let name = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
             
             print(name)
         }
         let discoveredPeripheral = DisplayPeripheral(peripheral: peripheral, lastRSSI: RSSI, isConnectable: isConnectable)
-        targetPeripheral = discoveredPeripheral
-        
+        self.onPeripheralFound(peripheral: discoveredPeripheral)
     }
 }
