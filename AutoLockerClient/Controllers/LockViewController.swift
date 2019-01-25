@@ -12,7 +12,7 @@ import LocalAuthentication
 fileprivate let userDefaultsKeyLAPolicy = "kLAManagerPolicy"
 fileprivate let kLockUnlockReason = "To lock/unlock Mac, application needs to make sure that you are a confidant."
 
-class ViewController: UIViewController {
+class LockViewController: UIViewController {
     
     private var authManager: LAManager!
 
@@ -24,8 +24,12 @@ class ViewController: UIViewController {
     }
 
     @IBAction func unlockMacButtonPressed(_ sender: UIButton) {
-        self.authManager.authorizeUserWithReason(kLockUnlockReason) { [weak self] (authorized) in
-            guard let weakSelf = self else { return }
+        self.authManager.authorizeUserWithReason(kLockUnlockReason) { [weak self] (authorized, error) in
+
+            if let error = error {
+                self?.showInfoAlert(title: "Error", message: error.localizedDescription)
+            }
+            
             if authorized {
                 // TODO: Send request with pwd to Mac
             } else {
@@ -36,8 +40,12 @@ class ViewController: UIViewController {
     
     
     @IBAction func lockMacButtonPressed(_ sender: UIButton) {
-        self.authManager.authorizeUserWithReason(kLockUnlockReason) { [weak self] (authorized) in
-            guard let weakSelf = self else { return }
+        self.authManager.authorizeUserWithReason(kLockUnlockReason) { [weak self] (authorized, error) in
+            
+            if let error = error {
+                self?.showInfoAlert(title: "Error", message: error.localizedDescription)
+            }
+            
             if authorized {
                 // TODO: Send lock request to Mac
             } else {

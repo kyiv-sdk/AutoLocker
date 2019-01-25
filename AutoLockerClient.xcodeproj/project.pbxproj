@@ -13,15 +13,16 @@
 		2467132A21F9E9DB008F7E21 /* BLEConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467132921F9E9DB008F7E21 /* BLEConstants.swift */; };
 		2467132C21F9F493008F7E21 /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467132B21F9F493008F7E21 /* BLEManager.swift */; };
 		4DB1177F9AAE18D37FE5E6EE /* Pods_AutoLockerClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CD3385E72D1AED0EFACA94 /* Pods_AutoLockerClient.framework */; };
-		567C57C021FB1CDF00B6A9F9 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567C57BF21FB1CDF00B6A9F9 /* UserDefaultsManager.swift */; };
-		56B4072321F9E56F001BA320 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B4072221F9E56F001BA320 /* GradientButton.swift */; };
-		56B4072521F9F5DC001BA320 /* LAManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B4072421F9F5DC001BA320 /* LAManager.swift */; };
 		56B4072721FA141D001BA320 /* AutoLockerSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B4072621FA141D001BA320 /* AutoLockerSettingsController.swift */; };
 		841D258C21F9D0720026D740 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D258B21F9D0720026D740 /* AppDelegate.swift */; };
-		841D258E21F9D0720026D740 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D258D21F9D0720026D740 /* ViewController.swift */; };
+		841D258E21F9D0720026D740 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D258D21F9D0720026D740 /* LockViewController.swift */; };
 		841D259121F9D0720026D740 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841D258F21F9D0720026D740 /* Main.storyboard */; };
 		841D259321F9D0730026D740 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841D259221F9D0730026D740 /* Assets.xcassets */; };
 		841D259621F9D0730026D740 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841D259421F9D0730026D740 /* LaunchScreen.storyboard */; };
+		B25DF6F721FB1FB50012BBE4 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25DF6F421FB1E740012BBE4 /* UIViewController+Alerts.swift */; };
+		B25DF6F921FB24EE0012BBE4 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25DF6F821FB24EE0012BBE4 /* GradientButton.swift */; };
+		B25DF6FB21FB24F40012BBE4 /* LAManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25DF6FA21FB24F40012BBE4 /* LAManager.swift */; };
+		B25DF6FD21FB26720012BBE4 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25DF6FC21FB26710012BBE4 /* UserDefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,18 +33,19 @@
 		2467132921F9E9DB008F7E21 /* BLEConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEConstants.swift; sourceTree = "<group>"; };
 		2467132B21F9F493008F7E21 /* BLEManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
 		30CD3385E72D1AED0EFACA94 /* Pods_AutoLockerClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoLockerClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		567C57BF21FB1CDF00B6A9F9 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
-		56B4072221F9E56F001BA320 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
-		56B4072421F9F5DC001BA320 /* LAManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LAManager.swift; sourceTree = "<group>"; };
 		56B4072621FA141D001BA320 /* AutoLockerSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLockerSettingsController.swift; sourceTree = "<group>"; };
 		5C9FEC8F127EC9B833DADE20 /* Pods-AutoLockerClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLockerClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLockerClient/Pods-AutoLockerClient.debug.xcconfig"; sourceTree = "<group>"; };
 		841D258821F9D0720026D740 /* AutoLockerClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoLockerClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		841D258B21F9D0720026D740 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		841D258D21F9D0720026D740 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		841D258D21F9D0720026D740 /* LockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewController.swift; sourceTree = "<group>"; };
 		841D259021F9D0720026D740 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		841D259221F9D0730026D740 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		841D259521F9D0730026D740 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		841D259721F9D0730026D740 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B25DF6F421FB1E740012BBE4 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
+		B25DF6F821FB24EE0012BBE4 /* GradientButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		B25DF6FA21FB24F40012BBE4 /* LAManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LAManager.swift; sourceTree = "<group>"; };
+		B25DF6FC21FB26710012BBE4 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,17 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2467132421F9E969008F7E21 /* Model */ = {
+		2467132421F9E969008F7E21 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				2467132521F9E982008F7E21 /* MacConfiguration.swift */,
 				2467132721F9E99B008F7E21 /* PeripheralController.swift */,
 				2467132921F9E9DB008F7E21 /* BLEConstants.swift */,
-				2467132B21F9F493008F7E21 /* BLEManager.swift */,
-				56B4072421F9F5DC001BA320 /* LAManager.swift */,
-				567C57BF21FB1CDF00B6A9F9 /* UserDefaultsManager.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		379F569309501334C4404406 /* Pods */ = {
@@ -102,15 +101,16 @@
 		841D258A21F9D0720026D740 /* AutoLockerClient */ = {
 			isa = PBXGroup;
 			children = (
-				56B4072221F9E56F001BA320 /* GradientButton.swift */,
+				B25DF6F321FB1E5E0012BBE4 /* Extensions */,
+				B25DF6EF21FB1DC60012BBE4 /* Controllers */,
+				B25DF6F221FB1DFA0012BBE4 /* Storyboards */,
+				B25DF6F121FB1DD70012BBE4 /* Views */,
+				B25DF6F021FB1DD00012BBE4 /* Managers */,
+				2467132421F9E969008F7E21 /* Models */,
 				841D258B21F9D0720026D740 /* AppDelegate.swift */,
-				841D258D21F9D0720026D740 /* ViewController.swift */,
-				56B4072621FA141D001BA320 /* AutoLockerSettingsController.swift */,
-				841D258F21F9D0720026D740 /* Main.storyboard */,
 				841D259221F9D0730026D740 /* Assets.xcassets */,
 				841D259421F9D0730026D740 /* LaunchScreen.storyboard */,
 				841D259721F9D0730026D740 /* Info.plist */,
-				2467132421F9E969008F7E21 /* Model */,
 			);
 			path = AutoLockerClient;
 			sourceTree = "<group>";
@@ -122,6 +122,49 @@
 				30CD3385E72D1AED0EFACA94 /* Pods_AutoLockerClient.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B25DF6EF21FB1DC60012BBE4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				841D258D21F9D0720026D740 /* LockViewController.swift */,
+				56B4072621FA141D001BA320 /* AutoLockerSettingsController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B25DF6F021FB1DD00012BBE4 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				B25DF6FC21FB26710012BBE4 /* UserDefaultsManager.swift */,
+				2467132B21F9F493008F7E21 /* BLEManager.swift */,
+				B25DF6FA21FB24F40012BBE4 /* LAManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		B25DF6F121FB1DD70012BBE4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B25DF6F821FB24EE0012BBE4 /* GradientButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B25DF6F221FB1DFA0012BBE4 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				841D258F21F9D0720026D740 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		B25DF6F321FB1E5E0012BBE4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B25DF6F421FB1E740012BBE4 /* UIViewController+Alerts.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,13 +296,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B25DF6F721FB1FB50012BBE4 /* UIViewController+Alerts.swift in Sources */,
 				2467132A21F9E9DB008F7E21 /* BLEConstants.swift in Sources */,
 				2467132C21F9F493008F7E21 /* BLEManager.swift in Sources */,
-				841D258E21F9D0720026D740 /* ViewController.swift in Sources */,
+				B25DF6FD21FB26720012BBE4 /* UserDefaultsManager.swift in Sources */,
+				841D258E21F9D0720026D740 /* LockViewController.swift in Sources */,
 				56B4072721FA141D001BA320 /* AutoLockerSettingsController.swift in Sources */,
-				56B4072321F9E56F001BA320 /* GradientButton.swift in Sources */,
-				56B4072521F9F5DC001BA320 /* LAManager.swift in Sources */,
-				567C57C021FB1CDF00B6A9F9 /* UserDefaultsManager.swift in Sources */,
+				B25DF6FB21FB24F40012BBE4 /* LAManager.swift in Sources */,
+				B25DF6F921FB24EE0012BBE4 /* GradientButton.swift in Sources */,
+				841D258E21F9D0720026D740 /* LockViewController.swift in Sources */,
+				56B4072721FA141D001BA320 /* AutoLockerSettingsController.swift in Sources */,
 				2467132821F9E99B008F7E21 /* PeripheralController.swift in Sources */,
 				2467132621F9E982008F7E21 /* MacConfiguration.swift in Sources */,
 				841D258C21F9D0720026D740 /* AppDelegate.swift in Sources */,

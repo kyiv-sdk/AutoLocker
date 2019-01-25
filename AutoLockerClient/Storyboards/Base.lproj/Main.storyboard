@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yfm-n9-dR5">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,13 +9,13 @@
         <!--AutoLocker-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AutoLockerClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LockViewController" customModule="AutoLockerClient" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEm-dj-X11" customClass="GradientButton" customModule="AutoLockerClient" customModuleProvider="target">
-                                <rect key="frame" x="20" y="538.5" width="160" height="47"/>
+                                <rect key="frame" x="24" y="481" width="268.5" height="42"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Unock Mac">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -37,7 +34,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vi-pd-o2l" customClass="GradientButton" customModule="AutoLockerClient" customModuleProvider="target">
-                                <rect key="frame" x="195" y="538.5" width="160" height="47"/>
+                                <rect key="frame" x="307.5" y="481" width="268.5" height="42"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Lock Mac">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -56,7 +53,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWd-st-8fh" customClass="GradientButton" customModule="AutoLockerClient" customModuleProvider="target">
-                                <rect key="frame" x="20" y="600.5" width="335" height="46.5"/>
+                                <rect key="frame" x="24" y="538" width="552" height="42"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Open AutoLocker Settings">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -90,6 +87,7 @@
                             <constraint firstItem="jWd-st-8fh" firstAttribute="top" secondItem="iEm-dj-X11" secondAttribute="bottom" constant="15" id="aTD-HK-uce"/>
                             <constraint firstItem="jWd-st-8fh" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.07" priority="960" id="pl6-8X-EUt"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Afu-ND-ADz"/>
                     </view>
                     <navigationItem key="navigationItem" title="AutoLocker" id="ZDX-tv-qyO"/>
                 </viewController>
@@ -102,18 +100,18 @@
             <objects>
                 <viewController title="AutoLocker Settings" id="QuI-9K-g91" customClass="AutoLockerSettingsController" customModule="AutoLockerClient" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="COv-L1-7MM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qm4-Qb-W6Y">
-                                <rect key="frame" x="20" y="617" width="335" height="30"/>
+                                <rect key="frame" x="20" y="550" width="560" height="30"/>
                                 <state key="normal" title="Set Mac Secret Key"/>
                                 <connections>
                                     <action selector="setSecretKeyButtonPressed:" destination="QuI-9K-g91" eventType="touchUpInside" id="BaM-ku-gCQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwM-9l-G6F">
-                                <rect key="frame" x="20" y="572" width="335" height="30"/>
+                                <rect key="frame" x="20" y="505" width="560" height="30"/>
                                 <state key="normal" title="Set Mac Password"/>
                                 <connections>
                                     <action selector="setPasswortButtonPressed:" destination="QuI-9K-g91" eventType="touchUpInside" id="pvp-pU-4vJ"/>
