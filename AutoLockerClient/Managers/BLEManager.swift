@@ -22,7 +22,7 @@ class BLEManager: NSObject, BLEDataDelegate {
 
     private override init() {
         super.init()
-        // TODO: restoreConfiguration
+        self.macConfiguration = UserDefaultsManager.sharedInstance.getMacConfiguration()
         setupPeripheralController()
     }
     

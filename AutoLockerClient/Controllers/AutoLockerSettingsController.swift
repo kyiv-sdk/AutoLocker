@@ -8,9 +8,6 @@
 
 import UIKit
 
-fileprivate let userDefaultsKeyMacPassword = "kMacPassword"
-fileprivate let userDefaultsKeyMacSecretKey = "kMacSecretKey"
-
 fileprivate let kMacPasswordAlertMessage = "To unclock your Mac, application should know its Password. Please enter password in Text Field below."
 fileprivate let kMacSecretKeyAlertMessage = "To identify your Mac, application should know its Secret Key. Please enter Secret Key in Text Field below."
 
@@ -21,8 +18,8 @@ class AutoLockerSettingsController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.enteredPassword = UserDefaults.standard.value(forKey: userDefaultsKeyMacPassword) as? String
-        self.enteredSecretKey = UserDefaults.standard.value(forKey: userDefaultsKeyMacSecretKey) as? String
+        self.enteredPassword = UserDefaultsManager.sharedInstance.macPassword
+        self.enteredSecretKey = UserDefaultsManager.sharedInstance.macSecretKey
     }
     
     
@@ -31,8 +28,8 @@ class AutoLockerSettingsController: UIViewController {
         self.showTextFieldAlertWithTitle("Mac Password", message: kMacPasswordAlertMessage, andPlaceholder: "password") { [weak self] (password) in
             guard let weakSelf = self else { return }
             if let password = password {
+                UserDefaultsManager.sharedInstance.macPassword = password
                 weakSelf.enteredPassword = password
-                UserDefaults.standard.setValue(password, forKey: userDefaultsKeyMacPassword)
                 weakSelf.updateMacSettings()
             }
         }
@@ -43,8 +40,8 @@ class AutoLockerSettingsController: UIViewController {
         self.showTextFieldAlertWithTitle("Secret Key", message: kMacSecretKeyAlertMessage, andPlaceholder: "key") { [weak self] (key) in
             guard let weakSelf = self else { return }
             if let key = key {
+                UserDefaultsManager.sharedInstance.macSecretKey = key
                 weakSelf.enteredSecretKey = key
-                UserDefaults.standard.setValue(key, forKey: userDefaultsKeyMacSecretKey)
                 weakSelf.updateMacSettings()
             }
         }
