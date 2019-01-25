@@ -15,6 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        let data = Injection.shared.injectBleDeviceData()
+        data.secret = "123456"
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

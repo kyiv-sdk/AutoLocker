@@ -37,23 +37,33 @@ class Scanner: NSObject {
         self.bleDeviceData = bleDeviceData
         self.lockOutDecider = lockOutDecider;
         super.init()
-        self.centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
+        self.centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.global(qos: DispatchQoS.QoSClass.userInteractive))
     }
     
     // MARK: Scan logic
     
     func onPeripheralFound(peripheral: DisplayPeripheral) {
         self.targetPeripheral = peripheral
-        self.cancelScanning()
-        self.connection = BleConnection.createConnection(central: centralManager,
+        // TODO:
+        self.isScanning = false
+        self.connection = BleConnection.createConnection(central: self.centralManager,
                                                          peripheral: peripheral,
                                                          bleDeviceData: bleDeviceData, 
                                                          lockOutDecider: self.lockOutDecider)
+        self.cancelScanning()
     }
     
     func onScanStart() -> Bool {
+        if self.centralManager.state != .poweredOn {
+            print("can not scan, scanner is off")
+            self.isScanning = false;
+            //TODO:
+//            self.cancelScanning()
+            return false
+        }
         if (self.bleDeviceData.getCharacteristicUUID() == nil) {
             print("Scanning is not possible, please set salt");
+            return false
         }
         if (self.targetPeripheral != nil ||
             self.isScanning) {
@@ -103,12 +113,22 @@ extension Scanner: CBCentralManagerDelegate {
             print("state: On")
             scanPeripherals()
         }
+        else {
+            print("state: Of")
+            cancelScanning()
+        }
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        if self.isScanning == false{
+            return
+        }
         let isConnectable = advertisementData[CBAdvertisementDataIsConnectable] as! Bool
         if let name = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
-            
+            if name == "AutoLock advertisement" {
+                print("Catch avertisement")
+                return;
+            }
             print(name)
         }
         let discoveredPeripheral = DisplayPeripheral(peripheral: peripheral, lastRSSI: RSSI, isConnectable: isConnectable)
@@ -116,10 +136,14 @@ extension Scanner: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        self.connection?.didConnect()
+        self.connection?.didFailToConnect()
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        self.connection?.didFailToConnect()
+        self.connection?.didConnect()
+    }
+    
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        
     }
 }

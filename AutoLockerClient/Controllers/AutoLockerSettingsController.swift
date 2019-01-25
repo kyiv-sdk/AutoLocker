@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 fileprivate let kMacPasswordAlertMessage = "To unclock your Mac, application should know its Password. Please enter password in Text Field below."
 fileprivate let kMacSecretKeyAlertMessage = "To identify your Mac, application should know its Secret Key. Please enter Secret Key in Text Field below."
 
 class AutoLockerSettingsController: UIViewController {
     
+    private var authManager: LAManager!
     private var enteredPassword: String?
     private var enteredSecretKey: String?
 
@@ -22,6 +24,12 @@ class AutoLockerSettingsController: UIViewController {
         self.enteredSecretKey = UserDefaultsManager.sharedInstance.macSecretKey
     }
     
+    
+    
+    @IBAction func policySwitcherValueChanged(_ sender: UISwitch) {
+        if sender.isOn { authManager.policy = LAManager.strictestPolicy }
+        else { authManager.policy = LAPolicy(rawValue: 2)! }
+    }
     
     
     @IBAction func setPasswortButtonPressed(_ sender: UIButton) {
@@ -49,7 +57,7 @@ class AutoLockerSettingsController: UIViewController {
     
     
     
-    func showTextFieldAlertWithTitle(_ title: String, message: String, andPlaceholder placeholder:String, completion handler: @escaping (String?) -> Void) -> Void {
+    private func showTextFieldAlertWithTitle(_ title: String, message: String, andPlaceholder placeholder:String, completion handler: @escaping (String?) -> Void) -> Void {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = placeholder
@@ -77,6 +85,10 @@ class AutoLockerSettingsController: UIViewController {
             let manager = BLEManager.sharedInstance
             manager.addConfiguration(macConfiguration: MacConfiguration(password: password, secret: key))
         }
+    }
+    
+    func setLAManager(_ manager: LAManager) -> Void {
+        self.authManager = manager
     }
     
 }
