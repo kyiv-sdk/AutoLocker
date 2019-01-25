@@ -15,7 +15,7 @@ class UserDefaultsManager {
         get { return UserDefaults.standard.value(forKey: UserDefaultsKeys.MacPasswordKey) as? String }
         set { UserDefaults.standard.setValue(newValue, forKey: UserDefaultsKeys.MacPasswordKey) }
     }
-    
+
     
     var macSecretKey: String? {
         get { return UserDefaults.standard.value(forKey: UserDefaultsKeys.SecretKeyKey) as? String }
@@ -47,9 +47,8 @@ class UserDefaultsManager {
         return nil
     }
     
-    
+
     static let sharedInstance = UserDefaultsManager()
-    private init() {}
 }
 
 

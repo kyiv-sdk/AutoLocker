@@ -13,7 +13,7 @@ fileprivate let kLockUnlockReason = "To lock/unlock Mac, application needs to ma
 fileprivate let kChangeSettingsReason = "To access AutoLocker settings, application needs to make sure that you are device owner."
 
 class LockViewController: UIViewController {
-    
+
     private var authManager: LAManager!
 
     override func viewDidLoad() {
@@ -29,8 +29,8 @@ class LockViewController: UIViewController {
             // TODO: Handle unauthorized case
         })
     }
-    
-    
+
+
     @IBAction func lockMacButtonPressed(_ sender: UIButton) {
         self.askPermission(onSuccess: {
             // TODO: Send lock request to Mac
@@ -38,7 +38,7 @@ class LockViewController: UIViewController {
             // TODO: Handle unauthorized case
         })
     }
-    
+
     @IBAction func showAutoLockerSettingsButtonPressed(_ sender: UIButton) {
         self.authManager.authorizeDeviceOwnerWithReason(kLockUnlockReason) { [weak self] (success, error) in
             if let error = error { self?.showInfoAlert(title: "Error", message: error.localizedDescription) }
@@ -46,29 +46,28 @@ class LockViewController: UIViewController {
                 self?.performSegue(withIdentifier: "ShowAutoLockerSettings", sender: self)
             }
         }
-        
+
     }
-    
-    
-    
+
+
+
     private func askPermission(onSuccess: @escaping () -> Void, onFail: @escaping () -> Void) -> Void {
         self.authManager.authorizeUserWithReason(kLockUnlockReason) { [weak self] (success, error) in
             if success { onSuccess() }
             else {
-                if let error = error { self?.showInfoAlert(title: "Error", message: error.localizedDescription) }
+                if let error = error { self?.showInfoAlert(title: String.appName, message: error.localizedDescription) }
                 onFail()
             }
         }
     }
-    
-    
-    
+
+
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowAutoLockerSettings" {
             let destination = segue.destination as! AutoLockerSettingsController
             destination.setLAManager(self.authManager)
         }
     }
-    
-}
 
+}
