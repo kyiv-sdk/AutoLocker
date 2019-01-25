@@ -14,6 +14,6 @@ struct BLEConstants {
     // secret 6 digits at the end
     static let kCharacteristicUUIDPrefix = "3A158467-0CBA-467F-A4AB-DFA167"
     static let kInvalidRSSIMinValue = -15
-    static let kMaxRSSIUnlockValue = -50
-    static let kMinRSSILockValue = -75
+    static let kMaxRSSIUnlockValue = -40
+    static let kMinRSSILockValue = -70
 }

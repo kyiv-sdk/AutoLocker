@@ -17,11 +17,7 @@ class ViewController: NSViewController {
         super.viewDidLoad()
         
         //toggleLaunchAtStartup()
-        
-        lock()
-        
-        presenter.attachView(view: self)
-        
+                        
         presenter.startScanPeripherals()
         // Do any additional setup after loading the view.
     }
@@ -34,11 +30,4 @@ class ViewController: NSViewController {
 }
 
 
-extension ViewController: View {
-   
-    func lock() {
-        let appleScript = NSAppleScript(source: "do shell script \"/System/Library/CoreServices/'Menu Extras'/User.menu/Contents/Resources/CGSession -suspend\"")
-        
-        appleScript?.executeAndReturnError(nil);
-    }
-}
+

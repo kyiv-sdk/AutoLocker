@@ -27,17 +27,18 @@ class LockOutManager {
 extension LockOutManager: LockOutDecider {
     
     func getLockStrategy(rssi: NSNumber) -> LockStrategy {
+        let absValue = abs(rssi.intValue)
         if rssi.intValue > BLEConstants.kInvalidRSSIMinValue {
             return .LockStrategyRSSIReading
         }
-        if rssi.intValue < BLEConstants.kMinRSSILockValue {
-            if lockOutObserver.getLockOutState() == .Locked {
-                return .LockStrategyUnlock
-            }
-        }
-        if rssi.intValue > BLEConstants.kMaxRSSIUnlockValue {
+        if absValue > abs(BLEConstants.kMinRSSILockValue) {
             if lockOutObserver.getLockOutState() == .Unlocked {
                 return .LockStrategyLock
+            }
+        }
+        if absValue < abs(BLEConstants.kMaxRSSIUnlockValue) {
+            if lockOutObserver.getLockOutState() == .Locked {
+                return .LockStrategyUnlock
             }
         }
         return .LockStrategyRSSIReading
@@ -45,9 +46,15 @@ extension LockOutManager: LockOutDecider {
     
     func handleLock() {
         print("handle lock")
+        let appleScript = NSAppleScript(source: "do shell script \"/System/Library/CoreServices/'Menu Extras'/User.menu/Contents/Resources/CGSession -suspend\"")
+        
+        appleScript?.executeAndReturnError(nil);
     }
     
     func handleUnlock(data: Data?) {
-        print("handle lock")
+        print("handle unlock")
+        let appleScript = NSAppleScript(source: "tell application \"System Events\" to keystroke \"fdewf\"")
+        
+        appleScript?.executeAndReturnError(nil);
     }
 }
