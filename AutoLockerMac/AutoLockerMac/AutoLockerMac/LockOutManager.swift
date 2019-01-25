@@ -16,6 +16,8 @@ enum LockStrategy {
 
 protocol LockOutDecider {
     func getLockStrategy(rssi: NSNumber) -> LockStrategy
+    func handleUnlock()
+    func handleLock()
 }
 
 class LockOutManager {
@@ -24,8 +26,6 @@ class LockOutManager {
 
 extension LockOutManager: LockOutDecider {
     
-    // Mark: Lock/Unlock login
-    // TODO: move into a dedicated class
     func getLockStrategy(rssi: NSNumber) -> LockStrategy {
         if rssi.intValue > BLEConstants.kInvalidRSSIMinValue {
             return .LockStrategyRSSIReading
@@ -41,5 +41,13 @@ extension LockOutManager: LockOutDecider {
             }
         }
         return .LockStrategyRSSIReading
+    }
+    
+    func handleUnlock() {
+        print("handle unlock")
+    }
+    
+    func handleLock() {
+        print("handle lock")
     }
 }
