@@ -25,7 +25,7 @@ struct DisplayPeripheral: Hashable {
 class Scanner: NSObject {
     
     private var centralManager: CBCentralManager!
-    private var peripherals = Set<DisplayPeripheral>()
+    private var targetPeripheral: DisplayPeripheral?
     private let serviceUUID = CBUUID(string: BLEConstants.kServiceUUID)
     private var lockOutDataSource: LockOutDataSource
     private var bleDeviceData: BLEDeviceData
@@ -43,12 +43,18 @@ extension Scanner: PeripheralScannable
 {
     func scanPeripherals() {
         print("start scanning")
-        peripherals = []
+        if let identifier = self.bleDeviceData.deviceIdentifier,
+            let uuid = UUID(uuidString: identifier) {
+            let peripherals = self.centralManager.retrievePeripherals(withIdentifiers: [uuid])
+            if (peripherals.count > 0) {
+                
+            }
+        }
         self.centralManager?.scanForPeripherals(withServices: [serviceUUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
         DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in
             guard let strongSelf = self else { return }
             if strongSelf.centralManager!.isScanning {
-                strongSelf.centralManager?.stopScan()
+//                strongSelf.centralManager?.stopScan()
             }
         }
     }
@@ -69,7 +75,7 @@ extension Scanner: CBCentralManagerDelegate {
             print(name)
         }
         let discoveredPeripheral = DisplayPeripheral(peripheral: peripheral, lastRSSI: RSSI, isConnectable: isConnectable)
-        peripherals.insert(discoveredPeripheral)
+        targetPeripheral = discoveredPeripheral
         
     }
 }

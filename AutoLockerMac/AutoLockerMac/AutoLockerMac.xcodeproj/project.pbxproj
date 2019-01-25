@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2467133221FAFF78008F7E21 /* BLEDeviceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467133121FAFF78008F7E21 /* BLEDeviceData.swift */; };
+		2467133421FB105A008F7E21 /* BleConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467133321FB105A008F7E21 /* BleConnection.swift */; };
 		996B9EF321FA00DE00DC2A44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B9EF221FA00DE00DC2A44 /* AppDelegate.swift */; };
 		996B9EF521FA00DE00DC2A44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B9EF421FA00DE00DC2A44 /* ViewController.swift */; };
 		996B9EF721FA00DF00DC2A44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 996B9EF621FA00DF00DC2A44 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		2467133121FAFF78008F7E21 /* BLEDeviceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEDeviceData.swift; sourceTree = "<group>"; };
+		2467133321FB105A008F7E21 /* BleConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleConnection.swift; sourceTree = "<group>"; };
 		996B9EEF21FA00DE00DC2A44 /* AutoLockerMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoLockerMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		996B9EF221FA00DE00DC2A44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		996B9EF421FA00DE00DC2A44 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +54,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2467133521FB1160008F7E21 /* bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				996B9F0621FA045700DC2A44 /* PeripheralScannable.swift */,
+				2467133121FAFF78008F7E21 /* BLEDeviceData.swift */,
+				996B9F0C21FA1FC600DC2A44 /* CBPeripheral+Name.swift */,
+				2467133321FB105A008F7E21 /* BleConnection.swift */,
+				996B9F0821FA053500DC2A44 /* Scanner.swift */,
+			);
+			path = bluetooth;
+			sourceTree = "<group>";
+		};
 		996B9EE621FA00DE00DC2A44 = {
 			isa = PBXGroup;
 			children = (
@@ -81,11 +95,8 @@
 				996B9EFC21FA00DF00DC2A44 /* AutoLockerMac.entitlements */,
 				996B9F0221FA021400DC2A44 /* Presenter.swift */,
 				996B9F0421FA021F00DC2A44 /* View.swift */,
-				996B9F0621FA045700DC2A44 /* PeripheralScannable.swift */,
-				996B9F0821FA053500DC2A44 /* Scanner.swift */,
 				996B9F0A21FA069B00DC2A44 /* Injection.swift */,
-				996B9F0C21FA1FC600DC2A44 /* CBPeripheral+Name.swift */,
-				2467133121FAFF78008F7E21 /* BLEDeviceData.swift */,
+				2467133521FB1160008F7E21 /* bluetooth */,
 			);
 			path = AutoLockerMac;
 			sourceTree = "<group>";
@@ -174,6 +185,7 @@
 				996B9F0721FA045700DC2A44 /* PeripheralScannable.swift in Sources */,
 				996B9F0921FA053500DC2A44 /* Scanner.swift in Sources */,
 				996B9EF321FA00DE00DC2A44 /* AppDelegate.swift in Sources */,
+				2467133421FB105A008F7E21 /* BleConnection.swift in Sources */,
 				996B9F0D21FA1FC600DC2A44 /* CBPeripheral+Name.swift in Sources */,
 				996B9F1121FA277300DC2A44 /* LockOutObserver.swift in Sources */,
 			);
