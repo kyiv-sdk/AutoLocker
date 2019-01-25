@@ -47,10 +47,16 @@ class AutoLockerSettingsController: UIViewController {
     @IBAction func setSecretKeyButtonPressed(_ sender: UIButton) {
         self.showTextFieldAlertWithTitle("Secret Key", message: kMacSecretKeyAlertMessage, andPlaceholder: "key") { [weak self] (key) in
             guard let weakSelf = self else { return }
-            if let key = key {
+        
+            var message: String?
+            if let key = key,
+                key.isSecretKeyLongEnough(errorMessage: &message),
+                key.isSecretKeyAlphanumeric(errorMessage: &message) {
                 UserDefaultsManager.sharedInstance.macSecretKey = key
                 weakSelf.enteredSecretKey = key
                 weakSelf.updateMacSettings()
+            } else if let message = message {
+                self?.showInfoAlert(title: String.appName, message: message)
             }
         }
     }
@@ -72,10 +78,7 @@ class AutoLockerSettingsController: UIViewController {
             }
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
-            handler(nil)
-        }))
-        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     

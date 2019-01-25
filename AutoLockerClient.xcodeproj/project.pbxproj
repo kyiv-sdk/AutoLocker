@@ -24,6 +24,7 @@
 		B25DF6F921FB24EE0012BBE4 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25DF6F821FB24EE0012BBE4 /* GradientButton.swift */; };
 		B25DF6FB21FB24F40012BBE4 /* LAManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25DF6FA21FB24F40012BBE4 /* LAManager.swift */; };
 		B25DF6FD21FB26720012BBE4 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25DF6FC21FB26710012BBE4 /* UserDefaultsManager.swift */; };
+		B25DF70521FB66250012BBE4 /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25DF70421FB66250012BBE4 /* String+Validation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		B25DF6F821FB24EE0012BBE4 /* GradientButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		B25DF6FA21FB24F40012BBE4 /* LAManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LAManager.swift; sourceTree = "<group>"; };
 		B25DF6FC21FB26710012BBE4 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		B25DF70421FB66250012BBE4 /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			children = (
 				567C57C321FB582900B6A9F9 /* String+AppName.swift */,
 				B25DF6F421FB1E740012BBE4 /* UIViewController+Alerts.swift */,
+				B25DF70421FB66250012BBE4 /* String+Validation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				B25DF6FD21FB26720012BBE4 /* UserDefaultsManager.swift in Sources */,
 				567C57C121FB2DA500B6A9F9 /* LockViewController.swift in Sources */,
 				567C57C221FB2DA500B6A9F9 /* AutoLockerSettingsController.swift in Sources */,
+				B25DF70521FB66250012BBE4 /* String+Validation.swift in Sources */,
 				B25DF6FB21FB24F40012BBE4 /* LAManager.swift in Sources */,
 				B25DF6F921FB24EE0012BBE4 /* GradientButton.swift in Sources */,
 				2467132821F9E99B008F7E21 /* PeripheralController.swift in Sources */,
