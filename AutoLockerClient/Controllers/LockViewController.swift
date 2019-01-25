@@ -27,7 +27,7 @@ class LockViewController: UIViewController {
         self.authManager.authorizeUserWithReason(kLockUnlockReason) { [weak self] (authorized, error) in
 
             if let error = error {
-                self?.showInfoAlert(title: "Error", message: error.localizedDescription)
+                self?.showInfoAlert(title: String.appName, message: error.localizedDescription)
             }
             
             if authorized {
@@ -43,7 +43,7 @@ class LockViewController: UIViewController {
         self.authManager.authorizeUserWithReason(kLockUnlockReason) { [weak self] (authorized, error) in
             
             if let error = error {
-                self?.showInfoAlert(title: "Error", message: error.localizedDescription)
+                self?.showInfoAlert(title: String.appName, message: error.localizedDescription)
             }
             
             if authorized {
