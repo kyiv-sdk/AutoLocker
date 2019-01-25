@@ -11,6 +11,7 @@ import CoreBluetooth
 
 protocol BleConnectionProtocol {
     func didConnect()
+    func reconnect()
     func didFailToConnect()
 }
 
@@ -59,6 +60,9 @@ extension BleConnection: BleConnectionProtocol
     func didFailToConnect() {
         print("connection failed for peripheral " + (peripheral.peripheral.name ?? "unnamed"))
     }
+    func reconnect() {
+        self.manager.connect(peripheral.peripheral, options: nil)
+    }
 }
 
 extension BleConnection: CBPeripheralDelegate {
@@ -68,7 +72,7 @@ extension BleConnection: CBPeripheralDelegate {
             peripheral.readRSSI()
             return
         }
-        print("peripheral didReadRSSI")
+        print("peripheral didReadRSSI "+String(RSSI.doubleValue))
         // if rssi is invalid
         // or rssi is not defined for lock/unlock
         // then keep on reading
@@ -78,7 +82,8 @@ extension BleConnection: CBPeripheralDelegate {
             peripheral.readRSSI()
         case .LockStrategyUnlock:
             print("Try to unlock mac: current step is service discovering")
-            peripheral.discoverServices([self.serviceUUID])
+            self.lockOutManager.handleUnlock(data: nil)
+//            peripheral.discoverServices([self.serviceUUID])
         case .LockStrategyLock:
             print("Try to lock mac")
             self.lockOutManager.handleLock()

@@ -11,6 +11,7 @@ import Foundation
 protocol BLEDataDelegate {
     func getPeripheralCharacteristic() -> Data?
     func getPeripheralUUID() -> String?
+    func getSecret() -> String?
 }
 
 class BLEManager: NSObject, BLEDataDelegate {
@@ -54,6 +55,14 @@ class BLEManager: NSObject, BLEDataDelegate {
         }
         let uuid = BLEConstants.kCharacteristicUUIDPrefix + secret
         return uuid
+    }
+    
+    func getSecret() -> String? {
+        guard let secret = self.macConfiguration?.secret else {
+            // TODO:enable assert later assert(false, "")
+            return nil
+        }
+        return secret
     }
 }
 

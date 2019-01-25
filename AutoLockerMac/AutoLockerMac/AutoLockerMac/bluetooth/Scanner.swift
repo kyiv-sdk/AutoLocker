@@ -127,14 +127,17 @@ extension Scanner: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+        print("Failed to connect " + (error?.localizedDescription ?? ""))
         self.connection?.didFailToConnect()
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        print("Connected to peripheral")
         self.connection?.didConnect()
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        
+        print("Did disconnected")
+        self.connection?.reconnect()
     }
 }

@@ -14,12 +14,15 @@ enum LockOutState {
 }
 
 protocol LockOutDataSource {
-    func getLockOutState() -> LockOutState
+    func getLockOutState() -> (state: LockOutState, isPending: Bool)
+    func setPendingState(state: LockOutState)
 }
 
 class LockOutObserver: NSObject {
 
     private var state: LockOutState = .Unlocked
+    private var pendingTimer: Timer?
+    private var isPending = false
     
     override init() {
         super.init()
@@ -30,17 +33,34 @@ class LockOutObserver: NSObject {
     
     @objc func handleScreenLocked() {
        print("Screen is locked");
-       state = .Locked
+        state = .Locked
     }
     
     @objc func handleScreenUnlocked() {
         print("Screen is unlocked");
         state = .Unlocked
     }
+    
+    @objc func timerDidFire() {
+        self.isPending = false
+        pendingTimer = nil
+    }
 }
 
 extension LockOutObserver: LockOutDataSource {
-    func getLockOutState() -> LockOutState {
-        return state
+    
+    func getLockOutState() -> (state: LockOutState, isPending: Bool) {
+        return (state, isPending)
+    }
+    
+    func setPendingState(state: LockOutState) {
+        self.state = state
+        self.pendingTimer?.invalidate()
+        self.isPending = true
+        pendingTimer = Timer.scheduledTimer(timeInterval: 2,
+                                            target: self,
+                                            selector: (#selector(timerDidFire)),
+                                            userInfo: nil,
+                                            repeats: false)
     }
 }
