@@ -31,11 +31,11 @@ extension LockOutManager: LockOutDecider {
             return .LockStrategyRSSIReading
         }
         if rssi.intValue < BLEConstants.kMinRSSILockValue {
-            if lockOutObserver.getLockOutState() == .Unlocked {
-                return .LockStrategyLock
+            if lockOutObserver.getLockOutState() == .Locked {
+                return .LockStrategyUnlock
             }
         }
-        if rssi.intValue < BLEConstants.kMinRSSILockValue {
+        if rssi.intValue > BLEConstants.kMaxRSSIUnlockValue {
             if lockOutObserver.getLockOutState() == .Unlocked {
                 return .LockStrategyLock
             }

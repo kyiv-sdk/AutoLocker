@@ -37,28 +37,23 @@ class Scanner: NSObject {
         self.bleDeviceData = bleDeviceData
         self.lockOutDecider = lockOutDecider;
         super.init()
-        self.centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.global(qos: DispatchQoS.QoSClass.userInteractive))
+        self.centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
     }
     
     // MARK: Scan logic
     
     func onPeripheralFound(peripheral: DisplayPeripheral) {
         self.targetPeripheral = peripheral
-        // TODO:
-        self.isScanning = false
-        self.connection = BleConnection.createConnection(central: self.centralManager,
-                                                         peripheral: peripheral,
-                                                         bleDeviceData: bleDeviceData, 
-                                                         lockOutDecider: self.lockOutDecider)
         self.cancelScanning()
+        self.connection = BleConnection.createConnection(central: centralManager,
+                                                         peripheral: peripheral,
+                                                         bleDeviceData: bleDeviceData,
+                                                         lockOutDecider: self.lockOutDecider)
     }
     
     func onScanStart() -> Bool {
         if self.centralManager.state != .poweredOn {
-            print("can not scan, scanner is off")
-            self.isScanning = false;
-            //TODO:
-//            self.cancelScanning()
+            self.isScanning = false
             return false
         }
         if (self.bleDeviceData.getCharacteristicUUID() == nil) {
@@ -93,12 +88,12 @@ extension Scanner: PeripheralScannable
         isScanning = true
         self.centralManager?.scanForPeripherals(withServices: [serviceUUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
         // TODO: remove later
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in
-//            guard let strongSelf = self else { return }
-//            if strongSelf.centralManager!.isScanning {
-//                strongSelf.centralManager?.stopScan()
-//            }
-//        }
+        //        DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in
+        //            guard let strongSelf = self else { return }
+        //            if strongSelf.centralManager!.isScanning {
+        //                strongSelf.centralManager?.stopScan()
+        //            }
+        //        }
     }
     
     func cancelScanning() {
@@ -114,21 +109,17 @@ extension Scanner: CBCentralManagerDelegate {
             scanPeripherals()
         }
         else {
-            print("state: Of")
-            cancelScanning()
+            self.isScanning = false;
         }
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        if self.isScanning == false{
+        if self.isScanning == false {
             return
         }
         let isConnectable = advertisementData[CBAdvertisementDataIsConnectable] as! Bool
         if let name = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
-            if name == "AutoLock advertisement" {
-                print("Catch avertisement")
-                return;
-            }
+            
             print(name)
         }
         let discoveredPeripheral = DisplayPeripheral(peripheral: peripheral, lastRSSI: RSSI, isConnectable: isConnectable)
