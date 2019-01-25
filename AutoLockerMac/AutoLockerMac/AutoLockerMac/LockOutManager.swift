@@ -16,7 +16,7 @@ enum LockStrategy {
 
 protocol LockOutDecider {
     func getLockStrategy(rssi: NSNumber) -> LockStrategy
-    func handleUnlock()
+    func handleUnlock(data: Data?)
     func handleLock()
 }
 
@@ -43,11 +43,11 @@ extension LockOutManager: LockOutDecider {
         return .LockStrategyRSSIReading
     }
     
-    func handleUnlock() {
-        print("handle unlock")
+    func handleLock() {
+        print("handle lock")
     }
     
-    func handleLock() {
+    func handleUnlock(data: Data?) {
         print("handle lock")
     }
 }
