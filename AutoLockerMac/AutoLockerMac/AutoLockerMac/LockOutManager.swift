@@ -28,16 +28,18 @@ extension LockOutManager: LockOutDecider {
     
     func getLockStrategy(rssi: NSNumber) -> LockStrategy {
         let absValue = abs(rssi.intValue)
-        if rssi.intValue > BLEConstants.kInvalidRSSIMinValue {
+        let lockOutResponse = lockOutObserver.getLockOutState()
+        if rssi.intValue > BLEConstants.kInvalidRSSIMinValue ||
+            lockOutResponse.isPending == true {
             return .LockStrategyRSSIReading
         }
         if absValue > abs(BLEConstants.kMinRSSILockValue) {
-            if lockOutObserver.getLockOutState() == .Unlocked {
+            if lockOutResponse.state == .Unlocked {
                 return .LockStrategyLock
             }
         }
         if absValue < abs(BLEConstants.kMaxRSSIUnlockValue) {
-            if lockOutObserver.getLockOutState() == .Locked {
+            if lockOutResponse.state == .Locked {
                 return .LockStrategyUnlock
             }
         }
@@ -46,6 +48,7 @@ extension LockOutManager: LockOutDecider {
     
     func handleLock() {
         print("handle lock")
+        self.lockOutObserver.setPendingState(state: .Locked)
         let appleScript = NSAppleScript(source: "do shell script \"/System/Library/CoreServices/'Menu Extras'/User.menu/Contents/Resources/CGSession -suspend\"")
         
         appleScript?.executeAndReturnError(nil);
@@ -53,7 +56,8 @@ extension LockOutManager: LockOutDecider {
     
     func handleUnlock(data: Data?) {
         print("handle unlock")
-        let appleScript = NSAppleScript(source: "tell application \"System Events\" to keystroke \"fdewf\"")
+        self.lockOutObserver.setPendingState(state: .Unlocked)
+        let appleScript = NSAppleScript(source: "tell application \"System Events\" to keystroke \"Boris0210z\"")
         
         appleScript?.executeAndReturnError(nil);
     }

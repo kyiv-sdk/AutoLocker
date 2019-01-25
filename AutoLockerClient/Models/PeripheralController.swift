@@ -98,7 +98,12 @@ class PeripheralController : NSObject, CBPeripheralManagerDelegate {
         if (error != nil) {
             print(error!)
         }
-        peripheralManager.startAdvertising([CBAdvertisementDataServiceUUIDsKey: [serviceUUID], CBAdvertisementDataLocalNameKey: "AutoLock advertisement"])
+        let namePrefix = "AutoLock adv^_"
+        // TODO: security for secret
+        let secretBase64 = self.bleDataDelegate.getSecret();
+        let fullString = namePrefix + secretBase64!;
+        peripheralManager.startAdvertising([CBAdvertisementDataServiceUUIDsKey: [serviceUUID],
+                                            CBAdvertisementDataLocalNameKey: fullString])
     }
     
     func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
