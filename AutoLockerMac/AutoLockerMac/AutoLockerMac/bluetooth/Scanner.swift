@@ -47,10 +47,14 @@ class Scanner: NSObject {
         self.cancelScanning()
         self.connection = BleConnection.createConnection(central: centralManager,
                                                          peripheral: peripheral,
+                                                         bleDeviceData: bleDeviceData, 
                                                          lockOutDecider: self.lockOutDecider)
     }
     
     func onScanStart() -> Bool {
+        if (self.bleDeviceData.getCharacteristicUUID() == nil) {
+            print("Scanning is not possible, please set salt");
+        }
         if (self.targetPeripheral != nil ||
             self.isScanning) {
             return false

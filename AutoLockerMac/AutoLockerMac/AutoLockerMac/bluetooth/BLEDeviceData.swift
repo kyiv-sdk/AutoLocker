@@ -12,7 +12,7 @@ class BLEDeviceData: Codable
 {
     static private let kStorageKey = "SavedDeviceData"
     
-    var salt: String? {
+    var secret: String? {
         didSet {
             saveToStorage()
         }
@@ -21,6 +21,15 @@ class BLEDeviceData: Codable
         didSet {
             saveToStorage()
         }
+    }
+    
+    func getCharacteristicUUID() -> String? {
+        guard let secret = self.secret else {
+            // TODO:enable assert later assert(false, "")
+            return nil
+        }
+        let uuid = BLEConstants.kCharacteristicUUIDPrefix + secret
+        return uuid
     }
     
     func saveToStorage() {
