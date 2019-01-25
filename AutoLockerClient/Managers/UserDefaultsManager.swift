@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class UserDefaultsManager {
     
@@ -21,6 +22,17 @@ class UserDefaultsManager {
         set { UserDefaults.standard.setValue(newValue, forKey: UserDefaultsKeys.SecretKeyKey) }
     }
 
+    
+    var laPolicy: LAPolicy {
+        get {
+            if let rawValue = UserDefaults.standard.value(forKey: UserDefaultsKeys.LAPolicyKey) as? Int {
+                return LAPolicy.init(rawValue: rawValue)!
+            }
+            return LAManager.strictestPolicy
+        }
+        set { UserDefaults.standard.setValue(newValue.rawValue, forKey: UserDefaultsKeys.LAPolicyKey) }
+    }
+    
     
     func saveMacConfiguration(_ configuration: MacConfiguration) -> Void {
         self.macPassword = configuration.password
@@ -44,4 +56,5 @@ class UserDefaultsManager {
 fileprivate enum UserDefaultsKeys {
     static let MacPasswordKey = "kMacPassword"
     static let SecretKeyKey = "kMacSecretKey"
+    static let LAPolicyKey = "kLAManagerPolicy"
 }
