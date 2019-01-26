@@ -33,17 +33,24 @@ class LockOutObserver: NSObject {
     
     @objc func handleScreenLocked() {
        print("Screen is locked");
-        state = .Locked
+        self.isPending = false
+       state = .Locked
     }
     
     @objc func handleScreenUnlocked() {
         print("Screen is unlocked");
+        self.isPending = false
         state = .Unlocked
     }
     
     @objc func timerDidFire() {
         self.isPending = false
         pendingTimer = nil
+    }
+    
+    func resetTimer() {
+        self.pendingTimer?.invalidate()
+        self.pendingTimer = nil
     }
 }
 
