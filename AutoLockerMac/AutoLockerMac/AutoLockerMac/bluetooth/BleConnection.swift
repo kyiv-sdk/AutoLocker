@@ -85,7 +85,6 @@ extension BleConnection: CBPeripheralDelegate {
             peripheral.readRSSI()
         case .LockStrategyUnlock:
             print("Try to unlock mac: current step is service discovering")
-//            self.lockOutManager.handleUnlock(data: nil)
             peripheral.discoverServices([self.serviceUUID])
         case .LockStrategyLock:
             print("Try to lock mac")

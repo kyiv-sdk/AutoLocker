@@ -87,3 +87,18 @@ extension BleManager: ConnectionEventsDelegate {
         
     }
 }
+
+extension BleManager: BleConnectionHandler {
+    
+    func onReadingFailed(error: Error) {
+        
+    }
+    
+    func onReadData(data: NSData) {
+        
+    }
+    
+    func onRSSIReceived(rssi: NSNumber) {
+        
+    }
+}
