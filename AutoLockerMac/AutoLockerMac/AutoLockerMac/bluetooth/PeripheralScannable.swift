@@ -9,6 +9,7 @@
 import Foundation
 
 protocol PeripheralScannable: NSObjectProtocol {
+    func scanPeripherals(identifier: UUID?)
     func scanPeripherals()
     func cancelScanning()
 }

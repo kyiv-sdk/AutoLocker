@@ -10,9 +10,15 @@ import Foundation
 import CoreBluetooth
 
 protocol BleConnectionProtocol {
-    func didConnect()
+    func readRSSI()
     func reconnect()
-    func didFailToConnect()
+}
+
+// TODO: enable
+protocol BleConnectionHandler {
+    func onReadingFailed(error: Error)
+    func onReadData(data: NSData)
+    func onRSSIReceived(rssi: NSNumber)
 }
 
 class BleConnection: NSObject {
@@ -52,14 +58,11 @@ class BleConnection: NSObject {
 
 extension BleConnection: BleConnectionProtocol
 {
-    func didConnect() {
+    func readRSSI() {
         print("connection established for peripheral " + (peripheral.peripheral.name ?? "unnamed"))
         self.peripheral.peripheral.readRSSI()
     }
     
-    func didFailToConnect() {
-        print("connection failed for peripheral " + (peripheral.peripheral.name ?? "unnamed"))
-    }
     func reconnect() {
         self.manager.connect(peripheral.peripheral, options: nil)
     }

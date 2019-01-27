@@ -45,33 +45,29 @@ extension LockOutManager: LockOutDecider {
                 return .LockStrategyUnlock
             }
         }
-//        if isLocaked == false {
-//            isLocaked = true
-//            return .LockStrategyLock
-//        }
         return .LockStrategyRSSIReading
     }
     
     func handleLock() {
         print("handle lock")
-        self.lockOutObserver.setPendingState(state: .Locked)
+        self.lockOutObserver.setPendingState()
 //        let appleScript = NSAppleScript(source: "do shell script \"/System/Library/CoreServices/'Menu Extras'/User.menu/Contents/Resources/CGSession -suspend\"")
-        let script = "activate application \"SystemUIServer\" \n"+"tell application \"System Events\"\n" + "tell process \"SystemUIServer\" to keystroke \"q\" using {command down, control down}\n"+"end tell"
+//        let script = "activate application \"SystemUIServer\" \n"+"tell application \"System Events\"\n" + "tell process \"SystemUIServer\" to keystroke \"q\" using {command down, control down}\n"+"end tell"
+                let script = "tell application \"System Events\" to keystroke \"q\" using {command down, control down}"
         let appleScript = NSAppleScript(source: script)
         appleScript?.executeAndReturnError(nil);
     }
     
     func handleUnlock(data: Data?) {
         print("handle unlock")
-        self.lockOutObserver.setPendingState(state: .Unlocked)
 
         guard let receivedData = data else {
             //TODO:handle error
             return
         }
         let password = String(decoding: receivedData, as: UTF8.self)
-        self.lockOutObserver.setPendingState(state: .Unlocked)
-        let appleScript = NSAppleScript(source: "tell application \"System Events\"\n"+"keystroke \""+password+"\"\n"+"key code 36\n"+"end tell")
+        self.lockOutObserver.setPendingState()
+        let appleScript = NSAppleScript(source: "tell application \"System Events\"\n"+"keystroke \""+password+"\"\n"+"key code 36\n"+"end tell\n" + "do shell script \"caffeinate -u -t 2\"")
         
         appleScript?.executeAndReturnError(nil);
         

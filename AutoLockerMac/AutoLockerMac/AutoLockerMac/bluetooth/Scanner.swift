@@ -13,13 +13,25 @@ import Foundation
 struct DisplayPeripheral: Hashable {
     let peripheral: CBPeripheral
     let lastRSSI: NSNumber?
-    let isConnectable: Bool
+    let lastAdvertisementData: [String : Any]?
     
     var hashValue: Int { return peripheral.hashValue }
     
     static func ==(lhs: DisplayPeripheral, rhs: DisplayPeripheral) -> Bool {
         return lhs.peripheral == rhs.peripheral
     }
+}
+
+protocol ScannerHandler {
+    func onPeripheralDiscovered(peripheral:DisplayPeripheral)
+    func onPeripheralRetrieved(peripheral:DisplayPeripheral)
+    func onBleStateChanged(isPoweredOn: Bool)
+}
+
+protocol ConnectionEventsDelegate {
+    func onDisconnected(peripheral: CBPeripheral, error: Error?)
+    func onConnected(peripheral:CBPeripheral)
+    func onFailedToConnect(peripheral: CBPeripheral, error: Error?)
 }
 
 class Scanner: NSObject {
@@ -69,10 +81,21 @@ class Scanner: NSObject {
             let uuid = UUID(uuidString: identifier) {
             let peripherals = self.centralManager.retrievePeripherals(withIdentifiers: [uuid])
             if let peripheral = peripherals.last {
-                let displayPeripheral = DisplayPeripheral(peripheral: peripheral, lastRSSI: nil, isConnectable: true)
+                let displayPeripheral = DisplayPeripheral(peripheral: peripheral, lastRSSI: nil, lastAdvertisementData: nil)
                 self.onPeripheralFound(peripheral: displayPeripheral)
                 return false
             }
+        }
+        return true
+    }
+    
+    func isAbleToScan() -> Bool {
+        if self.centralManager.state != .poweredOn {
+            self.isScanning = false
+            return false
+        }
+        if (self.isScanning) {
+            return false
         }
         return true
     }
@@ -80,23 +103,23 @@ class Scanner: NSObject {
 
 extension Scanner: PeripheralScannable
 {
-    func scanPeripherals() {
+    func scanPeripherals(identifier: UUID?) {
         if onScanStart() == false {
             return
         }
         print("start scanning")
         isScanning = true
         self.centralManager?.scanForPeripherals(withServices: [serviceUUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
-        // TODO: remove later
-        //        DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in
-        //            guard let strongSelf = self else { return }
-        //            if strongSelf.centralManager!.isScanning {
-        //                strongSelf.centralManager?.stopScan()
-        //            }
-        //        }
+    }
+    
+    func scanPeripherals() {
+        self.scanPeripherals(identifier: nil)
     }
     
     func cancelScanning() {
+        if self.isScanning == false {
+            return
+        }
         self.centralManager?.stopScan()
         self.isScanning = false
     }
@@ -117,23 +140,21 @@ extension Scanner: CBCentralManagerDelegate {
         if self.isScanning == false {
             return
         }
-        let isConnectable = advertisementData[CBAdvertisementDataIsConnectable] as! Bool
         if let name = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
             
             print(name)
         }
-        let discoveredPeripheral = DisplayPeripheral(peripheral: peripheral, lastRSSI: RSSI, isConnectable: isConnectable)
+        let discoveredPeripheral = DisplayPeripheral(peripheral: peripheral, lastRSSI: RSSI, lastAdvertisementData: advertisementData)
         self.onPeripheralFound(peripheral: discoveredPeripheral)
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print("Failed to connect " + (error?.localizedDescription ?? ""))
-        self.connection?.didFailToConnect()
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("Connected to peripheral")
-        self.connection?.didConnect()
+        self.connection?.readRSSI()
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {

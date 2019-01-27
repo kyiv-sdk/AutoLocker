@@ -15,12 +15,13 @@ enum LockOutState {
 
 protocol LockOutDataSource {
     func getLockOutState() -> (state: LockOutState, isPending: Bool)
-    func setPendingState(state: LockOutState)
+    func setPendingState()
 }
 
 class LockOutObserver: NSObject {
 
     private var state: LockOutState = .Unlocked
+    private var lastStateBeforePending: LockOutState = .Unlocked
     private var pendingTimer: Timer?
     private var isPending = false
     
@@ -46,6 +47,9 @@ class LockOutObserver: NSObject {
     @objc func timerDidFire() {
         self.isPending = false
         pendingTimer = nil
+        if lastStateBeforePending == state {
+            print("Error!!! state was not changed after script execution, current state \(state)")
+        }
     }
     
     func resetTimer() {
@@ -60,11 +64,12 @@ extension LockOutObserver: LockOutDataSource {
         return (state, isPending)
     }
     
-    func setPendingState(state: LockOutState) {
-        self.state = state
+    func setPendingState() {
+        print("Pending state" + (state == .Locked ? "Locked":"Unlocked"));
         self.pendingTimer?.invalidate()
         self.isPending = true
-        pendingTimer = Timer.scheduledTimer(timeInterval: 2,
+        self.lastStateBeforePending = self.state
+        pendingTimer = Timer.scheduledTimer(timeInterval: 3,
                                             target: self,
                                             selector: (#selector(timerDidFire)),
                                             userInfo: nil,

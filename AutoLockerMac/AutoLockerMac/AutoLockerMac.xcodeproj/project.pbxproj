@@ -23,6 +23,7 @@
 		996B9F0D21FA1FC600DC2A44 /* CBPeripheral+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B9F0C21FA1FC600DC2A44 /* CBPeripheral+Name.swift */; };
 		996B9F0F21FA225700DC2A44 /* BLEConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B9F0E21FA225300DC2A44 /* BLEConstants.swift */; };
 		996B9F1121FA277300DC2A44 /* LockOutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996B9F1021FA277000DC2A44 /* LockOutObserver.swift */; };
+		CE63583821FD9ED3008A8FC5 /* BleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63583721FD9ED3008A8FC5 /* BleManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		996B9F0C21FA1FC600DC2A44 /* CBPeripheral+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CBPeripheral+Name.swift"; sourceTree = "<group>"; };
 		996B9F0E21FA225300DC2A44 /* BLEConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEConstants.swift; sourceTree = "<group>"; };
 		996B9F1021FA277000DC2A44 /* LockOutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockOutObserver.swift; sourceTree = "<group>"; };
+		CE63583721FD9ED3008A8FC5 /* BleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				996B9F0C21FA1FC600DC2A44 /* CBPeripheral+Name.swift */,
 				2467133321FB105A008F7E21 /* BleConnection.swift */,
 				996B9F0821FA053500DC2A44 /* Scanner.swift */,
+				CE63583721FD9ED3008A8FC5 /* BleManager.swift */,
 			);
 			path = bluetooth;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			files = (
 				996B9F0F21FA225700DC2A44 /* BLEConstants.swift in Sources */,
 				996B9F0521FA021F00DC2A44 /* View.swift in Sources */,
+				CE63583821FD9ED3008A8FC5 /* BleManager.swift in Sources */,
 				996B9F0321FA021400DC2A44 /* Presenter.swift in Sources */,
 				2467133221FAFF78008F7E21 /* BLEDeviceData.swift in Sources */,
 				2467133921FB26F4008F7E21 /* LockOutManager.swift in Sources */,
