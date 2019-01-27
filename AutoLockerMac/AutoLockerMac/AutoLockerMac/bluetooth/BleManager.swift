@@ -99,13 +99,13 @@ extension BleManager: BleConnectionHandler {
     }
     
     func onRSSIReceived(rssi: NSNumber) {
-        switch self.lockOutManager.getLockStrategy(rssi: rssi) {
+        switch self.lockOutDecider.getLockStrategy(rssi: rssi) {
         case .LockStrategyRSSIReading:
             print("keep on reading RSSI")
             self.connection!.readRSSI()
         case .LockStrategyUnlock:
             print("Try to unlock mac: current step is service discovering")
-            peripheral.discoverServices([self.serviceUUID])
+            self.connection!.startReading()
         case .LockStrategyLock:
             print("Try to lock mac")
             self.lockOutDecider!.handleLock()
