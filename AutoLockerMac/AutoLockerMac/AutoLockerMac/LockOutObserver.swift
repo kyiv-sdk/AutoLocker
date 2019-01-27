@@ -48,6 +48,7 @@ class LockOutObserver: NSObject {
         self.isPending = false
         pendingTimer = nil
         if lastStateBeforePending == state {
+            // TODO: maybe show error message? 
             print("Error!!! state was not changed after script execution, current state \(state)")
         }
     }

@@ -11,6 +11,7 @@ import CoreBluetooth
 
 protocol BleConnectionProtocol {
     func readRSSI()
+    func startReading()
     func reconnect()
 }
 
@@ -65,6 +66,10 @@ extension BleConnection: BleConnectionProtocol
     
     func reconnect() {
         self.manager.connect(peripheral.peripheral, options: nil)
+    }
+    
+    func startReading() {
+        self.peripheral.peripheral.discoverServices([self.serviceUUID])
     }
 }
 

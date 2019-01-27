@@ -70,9 +70,5 @@ extension LockOutManager: LockOutDecider {
         let appleScript = NSAppleScript(source: "tell application \"System Events\"\n"+"keystroke \""+password+"\"\n"+"key code 36\n"+"end tell\n" + "do shell script \"caffeinate -u -t 2\"")
         
         appleScript?.executeAndReturnError(nil);
-        
-//        let appleScript = NSAppleScript(source: "tell application \"System Events\"\n"+"keystroke \"user\"\n"+"key code 36\n"+"end tell")
-//
-//        appleScript?.executeAndReturnError(nil);
     }
 }
