@@ -160,6 +160,7 @@ extension BleConnection: CBPeripheralDelegate {
             return
         }
         let data = characteristic.value
+        print("peripheral didUpdateValueForCharacteristic")
         self.lockOutManager.handleUnlock(data: data)
         peripheral.readRSSI()
     }

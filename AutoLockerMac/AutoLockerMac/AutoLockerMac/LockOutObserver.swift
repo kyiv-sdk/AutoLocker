@@ -35,17 +35,22 @@ class LockOutObserver: NSObject {
     @objc func handleScreenLocked() {
        print("Screen is locked");
         self.isPending = false
-       state = .Locked
+        self.pendingTimer?.invalidate()
+        pendingTimer = nil
+        state = .Locked
     }
     
     @objc func handleScreenUnlocked() {
         print("Screen is unlocked");
         self.isPending = false
+        self.pendingTimer?.invalidate()
+        pendingTimer = nil
         state = .Unlocked
     }
     
     @objc func timerDidFire() {
         self.isPending = false
+        self.pendingTimer?.invalidate()
         pendingTimer = nil
         if lastStateBeforePending == state {
             // TODO: maybe show error message? 
@@ -62,7 +67,8 @@ class LockOutObserver: NSObject {
 extension LockOutObserver: LockOutDataSource {
     
     func getLockOutState() -> (state: LockOutState, isPending: Bool) {
-        return (state, isPending)
+        let isPendingState = self.isPending
+        return (state, isPendingState)
     }
     
     func setPendingState() {

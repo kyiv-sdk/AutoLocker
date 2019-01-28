@@ -134,27 +134,16 @@ class PeripheralController : NSObject, CBPeripheralManagerDelegate {
     }
     
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characteristic: CBCharacteristic) {
-        guard characteristic.uuid == characteristicUUID else {
-            return
-        }
-        guard let updatedValue = getNewCharacteristicValue() else {
-            return
-        }
-        let didSendValue = peripheralManager.updateValue(updatedValue, for: self.characteristic, onSubscribedCentrals: nil)
-        if !didSendValue {
-            print("waiting for resend …")
-        }
-    }
-    
-    func peripheralManagerIsReady(toUpdateSubscribers peripheral: CBPeripheralManager) {
-        // resend
-        guard let updatedValue = getNewCharacteristicValue() else {
-            return
-        }
-        let didSendValue = peripheralManager.updateValue(updatedValue, for: self.characteristic, onSubscribedCentrals: nil)
-        if !didSendValue {
-            assertionFailure("Fail to send value update.")
-        }
+//        guard characteristic.uuid == characteristicUUID else {
+//            return
+//        }
+//        guard let updatedValue = getNewCharacteristicValue() else {
+//            return
+//        }
+//        let didSendValue = peripheralManager.updateValue(updatedValue, for: self.characteristic, onSubscribedCentrals: nil)
+//        if !didSendValue {
+//            print("waiting for resend …")
+//        }
     }
 }
 

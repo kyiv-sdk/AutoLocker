@@ -51,6 +51,11 @@ extension LockOutManager: LockOutDecider {
     
     func handleLock() {
         print("handle lock")
+        if self.lockOutObserver.getLockOutState().isPending ||
+            self.lockOutObserver.getLockOutState().state == .Locked{
+            return
+        }
+        
         self.lockOutObserver.setPendingState()
 //        let appleScript = NSAppleScript(source: "do shell script \"/System/Library/CoreServices/'Menu Extras'/User.menu/Contents/Resources/CGSession -suspend\"")
 //        let script = "activate application \"SystemUIServer\" \n"+"tell application \"System Events\"\n" + "tell process \"SystemUIServer\" to keystroke \"q\" using {command down, control down}\n"+"end tell"
@@ -62,7 +67,8 @@ extension LockOutManager: LockOutDecider {
     func handleUnlock(data: Data?) {
         print("handle unlock")
 
-        if self.lockOutObserver.getLockOutState().isPending {
+        if self.lockOutObserver.getLockOutState().isPending ||
+            self.lockOutObserver.getLockOutState().state == .Unlocked{
             return
         }
         
