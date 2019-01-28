@@ -18,6 +18,7 @@ protocol LockOutDecider {
     func getLockStrategy(rssi: NSNumber) -> LockStrategy
     func handleUnlock(data: Data?)
     func handleLock()
+    func isAccessibillityAllowed() ->Bool
 }
 
 class LockOutManager {
@@ -61,14 +62,33 @@ extension LockOutManager: LockOutDecider {
     func handleUnlock(data: Data?) {
         print("handle unlock")
 
+        if self.lockOutObserver.getLockOutState().isPending {
+            return
+        }
+        
         guard let receivedData = data else {
             //TODO:handle error
             return
         }
         let password = String(decoding: receivedData, as: UTF8.self)
+        print("Password" + password)
         self.lockOutObserver.setPendingState()
         let appleScript = NSAppleScript(source: "tell application \"System Events\"\n"+"keystroke \""+password+"\"\n"+"key code 36\n"+"end tell\n" + "do shell script \"caffeinate -u -t 2\"")
         
-        appleScript?.executeAndReturnError(nil);
+        var dict: NSDictionary? = nil
+        appleScript?.executeAndReturnError(&dict);
+    }
+    
+    func isAccessibillityAllowed() -> Bool{
+ 
+        let appleScript = NSAppleScript(source: "tell application \"System Events\"\n"+"keystroke \" \"\n"+"key code 36\n"+"end tell\n")
+        
+        var dict: NSDictionary? = nil
+        appleScript?.executeAndReturnError(&dict);
+        if let dict = dict,
+            let _ = dict["NSAppleScriptErrorNumber"] {
+            return false;
+        }
+        return true
     }
 }

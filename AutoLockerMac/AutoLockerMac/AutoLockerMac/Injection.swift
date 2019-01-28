@@ -30,4 +30,8 @@ class Injection {
     func injectBleDeviceData() -> BLEDeviceData {
         return bleDeviceData
     }
+    
+    func injectLockOutManager() -> LockOutDecider {
+        return lockOutDecider
+    }
 }
